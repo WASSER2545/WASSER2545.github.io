@@ -1,3 +1,1 @@
-# 我的学术主页
-
-**My howepage:** xinyizhang-pku.github.io
+**My howepage:** WASSER2545.github.io
