@@ -73,12 +73,44 @@
 .STYLE31 {font-family: Calibri; font-size: 16px; color: #777777;}
 .STYLE32 {font-family: Calibri; font-size: 16px; color: #FF9933;}
 .STYLE50 {font-family: Calibri; font-size: 16px; color: #FF6666;}
-.STYLE33 {font-family: Calibri; font-size: 16px; margin:10 4px;}
+.STYLE33 {font-family: Calibri; font-size: 16px; margin:10 4px; font-weight: lighter;}
 .STYLE34 {font-family: Calibri; font-size: 22px; color: #777777;}
 .STYLE28 {font-family: Calibri; font-size: 28px; }
 .STYLE29 {font-size: 16px}
 .STYLE30 {font-size: 18px}
+.internshiptitle {font-family: Calibri; font-size: 16px; margin:10 4px; font-weight: bold;}
 
+.internship {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* 分隔线 */
+    padding-bottom: 10px;
+}
+body {
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Times New Roman', serif;
+
+    line-height: 2.0;
+    margin: 18px;
+}
+.details {
+    flex-grow: 1; /* 让内容部分占据可用空间 */
+    font-weight: lighter;
+    margin-right: 20px; /* 右侧留出空间 */
+}
+.date {
+    color: #888;
+    white-space: nowrap; /* 防止换行 */
+}
+p {
+    margin: 0; /* 去掉默认的外边距 */
+}
+.logo {
+    width: 60px; /* 设置 logo 的宽度 */
+    height: auto; /* 高度自动调整 */
+    margin-left: 20px; /* 左侧留出空间 */
+}
 -->
 
 </style>
@@ -97,8 +129,6 @@
 <div class="menu-category">Menu</div>
 <div class="menu-item"><a href="index.html" class="current">Home</a></div>
 <div class="menu-item"><a  href="cv/cv.pdf">CV</a></div>
-<div class="menu-item"><a href="https://www.researchgate.net/profile/Xinyi-Zhang-60">ResearchGate</a></div>
-    <div class="menu-item"><a href="https://github.com/Blairruc-pku">GitHub</a></div>
 
 </td> -->
 
@@ -107,21 +137,81 @@
 <div id="toptitle">
 <h1>Zhengle Wang (王郑乐) </h1>
 </div>
-    <p>  Homepage in Chinese: <a href="chinese.html"> 中文主页</a> </p>
-    <p>Zhengle Wang, is a graduated student in China Agricultural University</a>, and is now working as a research assistent in </a>.
-    <br>
-        https://cs.pku.edu.cn/English/Home.htm
-Her research focuses on <strong><span style="color:#337FE5;">autonomous database systems</span></strong>. She has published more than ten papers in top international conferences and journals (CCF Class A) in these areas.
+
+<p>  Homepage in Chinese: <a href="chinese.html"> 中文主页</a> </p>
+
+<p>Wang Zhengle, currently studying at China Agricultural University, in his junior year. He is currently a research assistant at the School of Information at Renmin University of China, under the supervision of <a href="http://iir.ruc.edu.cn/~fanj">Professor Fan Ju</a>.<br>
+    Previously interned in the search and recommendation algorithm team at the Dewu Community.<br>
+    His current research interests are <strong><span style="color:#337FE5;">AI4DB<span style="color:#000000;">, <strong><span style="color:#337FE5;">data mining<span style="color:#000000;">.
+ </p>
+
+ <p align=center>
+    <a href="mailto:ZhengleWang@outlook.com">Email</a> &nbsp/&nbsp
+    <a href="https://scholar.google.com/citations?user=igP_xY0AAAAJ&hl=zh-CN">Google Scholar</a> &nbsp/&nbsp
+    <a href="https://github.com/WASSER2545">Github</a> &nbsp
 </p>
+
+
+<div class="internship">
+    <div class="details">
+        <div class="title">Bachelor's Degree in Artificial Intelligence</div>
+        <div class="organization">China Agricultural University, School of Information and Electrical Engineering</div>
+    </div>
+    <div class="date">
+        <span>September 2021 - July 2026</span>
+        <br>
+        <img src="./images/cau.jpeg" alt="cau" class="logo">
+    </div>
+</div>
+
+<h2>Internship Experience</h2>
+
+<div class="internship">
+    <div class="details">
+        <span class="internshiptitle">Research Assistant</span>
+        <div class="organization">Renmin University of China, Gaoling Artificial Intelligence Research Institute, AI Box Research Group</div>
+        <p>Responsible for participating in the development of the open-source recommendation system framework RecBole, reproducing some serialized recommendation models and integrating them into the open-source framework.</p>
+    </div>
+    <div class="date">
+        <span>February 2023 - July 2023</span>
+    </div>
+</div>
+
+<div class="internship">
+    <div class="details">
+        <span class="internshiptitle">Research Assistant</span>
+        <div class="organization">Renmin University of China, School of Information and Resource Management, DataLab Group</div>
+        <p>Research direction: Workload Synthesis</p>
+    </div>
+    <div class="date">
+        <span>September 2023 - Present</span>
+        <br>
+        <img src="./images/dbai.png" alt="dbai" class="logo">
+    </div>
+</div>
+
+<div class="internship">
+    <div class="details">
+        <span class="internshiptitle">Algorithm Intern</span>
+        <div class="organization">Poizon APP</div>
+        <p>Involved in the precision ranking direction of community search, responsible for optimizing relevance matching models and parameter quantization.</p>
+    </div>
+    <div class="date">
+        <span>June 2024 - Present</span>
+        <br>
+        <img src="./images/poizon.jpeg" alt="poizon" class="logo">
+    </div>
+</div>
+
 
 
 <h2>Publications</h3>
                         <span class="STYLE34">2024</span>
                         <ul>
                             <li  class="STYLE33">
-                            <span style="font-size:16px;"><strong>Xinyi Zhang</strong>, Hong Wu, Yang Li, Jian Tan, Feifei Li, Bin Cui: <br> 
-                                 <span style="color:#337FE5;">An Efficient Transfer Learning Based Configuration Adviser for Database Tuning. </span><br>
-                                    Accepted by VLDB 2024. </span>
+                            <span style="font-size:16px;"><strong>Zhengle Wang</strong>, Ruifeng Wang, Minjuan Wang, Tianyun Lai, Man Zhang: <br> 
+                                 <span style="color:#337FE5;">Self-supervised transformer-based pre-training method with General Plant Infection dataset. </span><br>
+                                    Accepted by PRCV 2024.</span> 
                             </li>
                             
                         </ul>
@@ -130,24 +220,23 @@ Her research focuses on <strong><span style="color:#337FE5;">autonomous database
                         <span class="STYLE34">2023</span>
                         <ul>
                             <li  class="STYLE33">
-                            <span style="font-size:16px;"><strong>Xinyi Zhang</strong> Zhuo Chang, Hong Wu, Yang Li, Jia Chen, Jian Tan, Feifei Li, Bin Cui:<br>
-                             <span style="color:#337FE5;">A Unified and Efficient Coordinating Framework for Autonomous DBMS Tuning. </span><br>
-                                In Proceedings of the 2023 International Conference on Management of Data (SIGMOD 2023), 15 pages. </span>
-                            </li>    
+                            <span style="font-size:16px;">Yiming Liu, <strong>Zhengle Wang</strong>, Rujia Wang, Jiasi Chen, Hongju Gao:<br>
+                             <span style="color:#337FE5;">Flooding-based MobileNet to identify cucumber diseases from leaf images in natural scenes. </span><br>
+                             Computers and Electronics in Agriculture. (IF : 8.3)</span> 
+                            </li>
                         </ul>
 
-
 </ol>
-<h2>Services</h3>
+<h2>Services</h2>
 <p><b>Reviewer</b></p>
 <ul>
-<li><p>ACM Transactions on Database Systems (TODS)</p>
+<li><p>
+</p></li>
 </ul>
 <h2>Awards and Honors</h2>
 <ol>
     <li><p>
-
-</ul>
+</p></li>
 </ol>
 </td>
 </tr>
