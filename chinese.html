@@ -73,12 +73,42 @@
 .STYLE31 {font-family: Calibri; font-size: 16px; color: #777777;}
 .STYLE32 {font-family: Calibri; font-size: 16px; color: #FF9933;}
 .STYLE50 {font-family: Calibri; font-size: 16px; color: #FF6666;}
-.STYLE33 {font-family: Calibri; font-size: 16px; margin:10 4px;}
+.STYLE33 {font-family: Calibri; font-size: 16px; margin:10 4px; font-weight: lighter;}
 .STYLE34 {font-family: Calibri; font-size: 22px; color: #777777;}
 .STYLE28 {font-family: Calibri; font-size: 28px; }
 .STYLE29 {font-size: 16px}
 .STYLE30 {font-size: 18px}
+.internshiptitle {font-family: Calibri; font-size: 16px; margin:10 4px; font-weight: bold;}
 
+.internship {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* 分隔线 */
+    padding-bottom: 10px;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 18px;
+}
+.details {
+    flex-grow: 1; /* 让内容部分占据可用空间 */
+    font-weight: lighter;
+    margin-right: 20px; /* 右侧留出空间 */
+}
+.date {
+    color: #888;
+    white-space: nowrap; /* 防止换行 */
+}
+p {
+    margin: 0; /* 去掉默认的外边距 */
+}
+.logo {
+    width: 60px; /* 设置 logo 的宽度 */
+    height: auto; /* 高度自动调整 */
+    margin-left: 20px; /* 左侧留出空间 */
+}
 -->
 
 </style>
@@ -115,153 +145,63 @@
  <p align=center>
     <a href="mailto:ZhengleWang@outlook.com">Email</a> &nbsp/&nbsp
     <a href="https://scholar.google.com/citations?user=igP_xY0AAAAJ&hl=zh-CN">Google Scholar</a> &nbsp/&nbsp
-    <a href="https://github.com/WASSER2545">Github</a> &nbsp/&nbsp
+    <a href="https://github.com/WASSER2545">Github</a> &nbsp
 </p>
 
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>教育经历</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 20px;
-    }
-    .internship {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ccc; /* 分隔线 */
-        padding-bottom: 10px;
-    }
-    .details {
-        flex-grow: 1; /* 让内容部分占据可用空间 */
-        font-size: 0.9em;
-        margin-right: 20px; /* 右侧留出空间 */
-    }
-    .date {
-        color: #888;
-        white-space: nowrap; /* 防止换行 */
-    }
-    .title {
-        font-size: 1em; /* 正常字体大小 */
-        color: #777777;
-        margin: 0; /* 去掉默认的外边距 */
-    }
-    .organization {
-        font-size: 0.9em; /* 略小的字体 */
-        color: #777777; /* 更淡的颜色 */
-        margin: 0; /* 去掉默认的外边距 */
-    }
-    p {
-        margin: 0; /* 去掉默认的外边距 */
-    }
-    .logo {
-        width: 60px; /* 设置 logo 的宽度 */
-        height: auto; /* 高度自动调整 */
-        margin-left: 20px; /* 左侧留出空间 */
-    }
-</style>
-</head>
-<body>
+<h2>教育经历</h3>
 
-    <h2>教育经历</h3>
-    
-    <div class="internship">
-        <div class="details">
-            <div class="title">学士学位，人工智能</div>
-            <div class="organization">中国农业大学 信息与电气工程学院</div>
-        </div>
-        <div class="date">
-            <span>2021年9月 - 2026年7月</span>
-            <br>
-            <img src="./images/cau.jpeg" alt="cau" class="logo">
-        </div>
+<div class="internship">
+    <div class="details">
+        <div class="title">学士学位，人工智能</div>
+        <div class="organization">中国农业大学 信息与电气工程学院</div>
     </div>
-
-</body>
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>实习经历</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 20px;
-    }
-    .internship {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ccc; /* 分隔线 */
-        padding-bottom: 10px;
-    }
-    .details {
-        flex-grow: 1; /* 让内容部分占据可用空间 */
-        font-size: 0.9em;
-        margin-right: 20px; /* 右侧留出空间 */
-    }
-    .date {
-        color: #888;
-        white-space: nowrap; /* 防止换行 */
-    }
-    p {
-        margin: 0; /* 去掉默认的外边距 */
-    }
-    .logo {
-        width: 60px; /* 设置 logo 的宽度 */
-        height: 60px; /* 高度自动调整 */
-        object-fit: contain; /* 保持比例填充 */
-        margin-top: 5px; /* 顶部留出空间 */
-    }
-</style>
-</head>
-<body>
-
-    <h2>实习经历</h3>
-    
-    <div class="internship">
-        <div class="details">
-            <span class="STYLE34">科研助理</span>
-            <div class="organization">中国人民大学高瓴人工智能研究院，AI Box 研究组</div>
-            <p>负责参与开源推荐系统框架RecBole的开发，实现部分序列化推荐模型的复现并加入到开源框架中。</p>
-        </div>
-        <div class="date">
-            <span>2023年2月 - 2023年7月</span>
-        </div>
+    <div class="date">
+        <span>2021年9月 - 2026年7月</span>
+        <br>
+        <img src="./images/cau.jpeg" alt="cau" class="logo">
     </div>
+</div>
 
-    <div class="internship">
-        <div class="details">
-            <span class="STYLE34">科研助理</span>
-            <div class="organization">中国人民大学信息与资源管理学院，DataLab 组</div>
-            <p>研究方向为工作负载合成</p>
-        </div>
-        <div class="date">
-            <span>2023年9月 - 至今</span>
-            <br>
-            <img src="./images/dbai.png" alt="dbai" class="logo">
-        </div>
+<h2>实习经历</h3>
+
+<div class="internship">
+    <div class="details">
+        <span class="internshiptitle">科研助理</span>
+        <div class="organization">中国人民大学高瓴人工智能研究院，AI Box 研究组</div>
+        <p>负责参与开源推荐系统框架RecBole的开发，实现部分序列化推荐模型的复现并加入到开源框架中。</p>
     </div>
-
-    <div class="internship">
-        <div class="details">
-            <span class="STYLE34">算法实习生</span>
-            <div class="organization">得物 APP</div>
-            <p>参与社区搜索的精排方向，负责相关性匹配模型调优与参数量化。</p>
-        </div>
-        <div class="date">
-            <span>2024年6月 - 至今<span>
-            <br>
-            <img src="./images/poizon.jpeg" alt="poizon" class="logo">
-        </div>
+    <div class="date">
+        <span>2023年2月 - 2023年7月</span>
     </div>
+</div>
 
-</body>
+<div class="internship">
+    <div class="details">
+        <span class="internshiptitle">科研助理</span>
+        <div class="organization">中国人民大学信息与资源管理学院，DataLab 组</div>
+        <p>研究方向为工作负载合成</p>
+    </div>
+    <div class="date">
+        <span>2023年9月 - 至今</span>
+        <br>
+        <img src="./images/dbai.png" alt="dbai" class="logo">
+    </div>
+</div>
+
+<div class="internship">
+    <div class="details">
+        <span class="internshiptitle">算法实习生</span>
+        <div class="organization">得物 APP</div>
+        <p>参与社区搜索的精排方向，负责相关性匹配模型调优与参数量化。</p>
+    </div>
+    <div class="date">
+        <span>2024年6月 - 至今<span>
+        <br>
+        <img src="./images/poizon.jpeg" alt="poizon" class="logo">
+    </div>
+</div>
+
 
 <h2>论文/期刊</h3>
                         <span class="STYLE34">2024</span>
@@ -288,7 +228,7 @@
 <h2>社会兼职</h3>
 <p><b>审稿人</b></p>
 <ul>
-<li><p>PRCV
+<li><p>
 </ul>
 <h2>获奖与荣誉</h2>
 <ol>
