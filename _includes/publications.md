@@ -36,7 +36,11 @@
 
 </div>
 
-<div class="Preprint and In Submission">
-<ol class="bibliography">
 
-</div>
+<h2 id="publications" style="margin: 2px 0px -15px;">Preprint and In Submission</h2>
+
+
+<p style="margin: 25px 0px -25px;">(* indicates equal contribution, # indicates corresponding author)</p>
+
+<div class="publications">
+<ol class="bibliography">
