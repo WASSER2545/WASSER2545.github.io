@@ -14,5 +14,3 @@ My current research interests include AI4DB, Data Mining.
 - **AI for Databases (AI4DB)**: I'm interested in exploring the intersection of artificial intelligence and database management systems. Currently, I am closely collaborating with AWS and MIT CSAIL on the workload synthesis project.
 - **Natural Language Processing (NLP) - Model Quantization**: My research interests include model quantization techniques that enable the deployment of large-scale NLP models on resource-constrained devices. I am exploring methods to reduce the model size and computational requirements while maintaining performance. This includes investigating techniques such as weight pruning, quantization-aware training, and knowledge distillation to create efficient models that can be applied in real-time applications.
 
-## News
-
