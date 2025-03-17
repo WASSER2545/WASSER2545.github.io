@@ -11,6 +11,3 @@ layout: homepage
 {% include_relative _includes/internships.md %}
 
 {% include_relative _includes/services.md %}
-
-{% include_relative _includes/talks.md %}
-
