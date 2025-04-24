@@ -5,7 +5,7 @@
 
 I'm currently a undergraduate student at China Agricultural University. 
 I'm also very fortunate to closely work with Professor [Ju Fan](http://iir.ruc.edu.cn/~fanj) as a research intern.
-Previously I worked as an intern in the search and recommendation algorithm team at the Poizon Community.
+Previously I worked as an intern in the search and recommendation algorithm team at Poizon.inc.
 My current research interests include AI4DB, Data Mining.
 
 ## Research Interests
