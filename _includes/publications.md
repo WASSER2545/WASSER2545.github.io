@@ -47,7 +47,7 @@
   <div class="col-sm-12" style="position: relative;padding-right: 15px;padding-left: 20px;">
     <div class="title">PBench: Workload Synthesizer with Real Statistics for Cloud Analytics Benchmarking</div>
     <div class="author">Yan Zhou*, Chunwei Liu*, Bhuvan Urgaonkar, <strong>Zhengle Wang</strong>, Magnus Mueller, Chao Zhang, Songyue Zhang, Pascal Pfeil, Dominik Horn, Zhengchun Liu, Davide Pagano, Tim Kraska, Samuel Madden, Ju Fan#</div>
-    <div class="periodical"><em>Under Review, VLDB 2025</em></div>
+    <div class="periodical"><em>Under Revision, VLDB 2025</em></div>
   </div>
 </div>
 </li>
