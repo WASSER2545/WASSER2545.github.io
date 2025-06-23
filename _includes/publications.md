@@ -15,6 +15,7 @@
     <div class="periodical"><em>VLDB, 2025. (CCF A)</em></div>
     <div class="links">
     <a href="https://arxiv.org/abs/2506.16379" class="btn-badge"><img src="https://img.shields.io/badge/arxiv-2407.14911-blue"></a>
+    </div>
   </div>
 </div>
 </li>
