@@ -13,6 +13,8 @@
     <div class="title">PBench: Workload Synthesizer with Real Statistics for Cloud Analytics Benchmarking</div>
     <div class="author">Yan Zhou*, Chunwei Liu*, Bhuvan Urgaonkar, <strong>Zhengle Wang</strong>, Magnus Mueller, Chao Zhang, Songyue Zhang, Pascal Pfeil, Dominik Horn, Zhengchun Liu, Davide Pagano, Tim Kraska, Samuel Madden, Ju Fan#</div>
     <div class="periodical"><em>VLDB, 2025. (CCF A)</em></div>
+    <div class="links">
+    <a href="https://arxiv.org/abs/2506.16379" class="btn-badge"><img src="https://img.shields.io/badge/arxiv-2407.14911-blue"></a>
   </div>
 </div>
 </li>
