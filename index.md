@@ -8,4 +8,4 @@ layout: homepage
 
 {% include_relative _includes/internships.md %}
 
-{% include_relative _includes/page_viewers.md}
+{% include_relative _includes/page_viewers.md %}
