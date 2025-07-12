@@ -39,7 +39,7 @@
   <div class="col-sm-12" style="position: relative;padding-right: 15px;padding-left: 20px;">
     <div class="title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0168169923005549">Flooding-based MobileNet to identify cucumber diseases from leaf images in natural scenes</a></div>
     <div class="author">Yiming Liu, <strong>Zhengle Wang</strong>, Rujia Wang, Jiasi Chen, Hongju Gao#</div>
-    <div class="periodical"><em>Computers and Electronics in Agriculture. (IF : 8.3)</em></div>
+    <div class="periodical"><em>Computers and Electronics in Agriculture. (IF : 8.9)</em></div>
   </div>
 </div>
 </li>
