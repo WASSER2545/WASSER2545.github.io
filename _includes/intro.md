@@ -10,6 +10,5 @@ My current research interests include AI4DB, Data Mining.
 
 ## Research Interests
 
-- **Recommender Systems (Recsys)**: My research in recommender systems primarily revolves around coarse ranking and fine ranking methodologies. I am particularly interested in developing effective coarse ranking algorithms that can quickly filter large item sets to identify promising candidates.
-- **AI for Databases (AI4DB)**: I'm interested in exploring the intersection of artificial intelligence and database management systems. Currently, I am closely collaborating with AWS and MIT CSAIL on the workload synthesis project.
-
+- **Recommender Systems (Recsys)**: My research in recommender systems primarily revolves around coarse ranking and fine ranking methodologies. I am particularly interested in developing effective coarse ranking algorithms that can quickly filter large item sets to identify promising candidates. Previously I worked as an Machine Learning Intern in Poizon community search team and Meituan Hotel & Travel recommandation team.
+- **AI for Databases (AI4DB)**: I'm interested in exploring the intersection of artificial intelligence and database management systems. I'm particularly focusing on building tools for real cloud database benchmarking and optimizing cloud database systems. Currently, I am closely collaborating with Professor [Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html).
