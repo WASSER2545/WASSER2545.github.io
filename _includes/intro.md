@@ -1,10 +1,8 @@
 
 ## About Me
 
-I'm currently a undergraduate student at China Agricultural University. 
-I'm also very fortunate to closely work with Professor [Ju Fan](http://iir.ruc.edu.cn/~fanj) and [Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html) as a research assistant.
-Previously I worked as an intern in the search and recommendation algorithm team at Poizon.inc and Meituan.
-My current research interest is AI4DB, including cloud database benchmarking and optimization.
+I am a incoming CS PhD student at Purdue University, where I am honored to be advised by Professor [Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html). Currently, I am completing my undergraduate studies at China Agricultural University.
+My research interests lie in the intersection of AI and Databases (AI4DB), with a specific focus on cloud database benchmarking and optimization. Previously, I had the privilege of working with Professor [Ju Fan](http://iir.ruc.edu.cn/~fanj) and Professor Chunwei Liu as a research assistant, and I also gained industrial experience through internships at Poizon.inc and Meituan (Search and Recommendation Algorithm teams).
 
 ## Research Interests
 
