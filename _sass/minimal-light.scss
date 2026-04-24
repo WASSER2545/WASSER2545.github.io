@@ -607,3 +607,125 @@ footer {
   display:none;
   font-family: monospace;
 }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+  margin-top: 1.75rem;
+}
+
+.site-nav-link {
+  border: 1px solid #d7e1ea;
+  border-radius: 999px;
+  color: #043361;
+  display: inline-block;
+  font-size: 0.92rem;
+  padding: 0.35rem 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav-link:hover,
+.site-nav-link.is-active {
+  background: #043361;
+  border-color: #043361;
+  color: #ffffff;
+}
+
+.hero-card,
+.callout,
+.info-card,
+.highlight-item {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border: 1px solid #e1e8ef;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(4, 51, 97, 0.06);
+}
+
+.hero-card {
+  margin-bottom: 2.25rem;
+  padding: 1.7rem;
+}
+
+.hero-card h2 {
+  font-size: 1.9rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.eyebrow,
+.highlight-meta {
+  color: #5a7898;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.info-card,
+.highlight-item,
+.callout {
+  padding: 1.1rem 1.2rem;
+}
+
+.info-card h3,
+.highlight-item h3 {
+  font-size: 1.12rem;
+  margin-bottom: 0.65rem;
+}
+
+.highlight-list {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.highlight-item p:last-child,
+.info-card p:last-child,
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-nav-link {
+    background: rgba(62, 183, 240, 0.06);
+    border-color: rgba(62, 183, 240, 0.25);
+    color: rgb(62, 183, 240);
+  }
+
+  .site-nav-link:hover,
+  .site-nav-link.is-active {
+    background: rgb(62, 183, 240);
+    border-color: rgb(62, 183, 240);
+    color: #20212b;
+  }
+
+  .hero-card,
+  .callout,
+  .info-card,
+  .highlight-item {
+    background: linear-gradient(180deg, rgba(37, 41, 55, 0.95) 0%, rgba(32, 33, 43, 0.95) 100%);
+    border-color: rgba(87, 97, 121, 0.7);
+    box-shadow: none;
+  }
+
+  .eyebrow,
+  .highlight-meta {
+    color: #9fc8e6;
+  }
+}
+
+@media print, screen and (max-width: 960px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
