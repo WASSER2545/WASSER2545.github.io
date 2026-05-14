@@ -1,10 +1,17 @@
 
 ## About Me
 
-I am a incoming CS PhD student at Purdue University, where I am honored to be advised by Professor [Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html). Currently, I am completing my undergraduate studies at China Agricultural University.
-My research interests lie in the intersection of AI and Databases (AI4DB), with a specific focus on cloud database benchmarking and optimization. Previously, I had the privilege of working with Professor [Ju Fan](http://iir.ruc.edu.cn/~fanj) and Professor Chunwei Liu as a research assistant, and I also gained industrial experience through internships at Poizon.inc and Meituan (Search and Recommendation Algorithm teams).
+I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University advised by [Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html).
+
+My research interests are in database systems and cloud data analytics systems, with a particular focus on workload generation, query optimization, and performance evaluation for modern cloud-native OLAP databases.
+
+Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on projects related to cloud database benchmarking and system optimization. I also worked on large-scale recommendation and search systems through research and engineering internships in industry.
+
+My current research focuses on realistic execution-aware workload synthesis for cloud OLAP systems, aiming to bridge the gap between academic evaluation and real-world production workloads. More broadly, I am interested in learned system optimization, AI for systems, and agentic infrastructure for data-intensive applications.
+
+Feel free to reach out if you are interested in collaboration or discussion.
 
 ## Research Interests
 
-- **AI for Databases (AI4DB)**: I'm interested in exploring the intersection of artificial intelligence and database management systems. I'm particularly focusing on developing privacy-preserving workload generation techniques for evaluating cloud database systems and optimizing.
-- **Recommender Systems (Recsys)**: My research in recommender systems primarily revolves around coarse ranking and fine ranking methodologies. I am particularly interested in developing effective coarse ranking algorithms that can quickly filter large item sets to identify promising candidates. Previously I worked as an Machine Learning Intern in Poizon community search team and Meituan Hotel & Travel recommandation team.
+- **Cloud OLAP Systems & Benchmarking** : Realistic workload synthesis, execution-aware query generation, query optimization, and performance evaluation for modern cloud-native analytical databases.
+- **Agentic Systems Infrastructure**: Infrastructure and evaluation frameworks for agentic systems, including scalable data collection, trajectory management, execution environments, and AI-native system optimization.
