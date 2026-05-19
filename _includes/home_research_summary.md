@@ -1,8 +1,7 @@
 <div class="hero-card">
   <p class="eyebrow">Research Overview</p>
-  <h2>Building data systems that are easier to evaluate, optimize, and trust.</h2>
   <p>
-    I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University advised by <a href="https://www.cs.purdue.edu/people/faculty/chunwei.html">Chunwei Liu</a>.
+    I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University advised by <a href="https://www.cs.purdue.edu/people/faculty/chunwei.html">Prof. Chunwei Liu</a>.
     My research interests are in database systems and cloud data analytics systems, with a particular focus on workload generation, query optimization, and performance evaluation for modern cloud-native OLAP databases.
   </p>
   <p>

@@ -12,11 +12,6 @@ description: Selected research and applied machine learning projects by Zhengle 
 I am currently most interested in building benchmark workloads that reflect realistic data statistics and query behavior for cloud analytics systems.
 This line of work sits at the intersection of benchmarking, workload modeling, and practical database evaluation.
 
-### Learning-augmented Database Optimization
-
-I am broadly interested in how machine learning can assist data systems with tuning, workload understanding, and system optimization.
-The main question I care about is not only whether a model helps, but also how we evaluate that help rigorously.
-
 ## Applied ML Projects
 
 ### Ranking and Recommendation in Industry

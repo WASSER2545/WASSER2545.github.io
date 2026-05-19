@@ -6,12 +6,8 @@
     <p>Researching more realistic benchmark construction for cloud data systems, with emphasis on workload generation and faithful evaluation.</p>
   </div>
   <div class="info-card">
-    <h3>AI for Database Optimization</h3>
-    <p>Exploring how machine learning can support system tuning and decision-making in database environments while remaining robust under changing workloads.</p>
-  </div>
-  <div class="info-card">
-    <h3>Industrial Ranking And Recommendation</h3>
-    <p>Applying large-scale machine learning in search and recommendation teams, which continues to shape how I think about real-world system constraints.</p>
+    <h3>TraceForge</h3>
+    <p>Developing infrastructure for collecting, organizing, and evaluating agent interaction traces in ways that support reliable analysis and future system improvement.</p>
   </div>
 </div>
 
