@@ -1,7 +1,7 @@
 ---
 layout: site
 title: Home
-description: Research overview for Zhengle Wang, an incoming PhD student working on AI for databases, benchmarking, and data systems.
+description: Research overview for Zhengle Wang, a Ph.D. student working on AI for databases, benchmarking, and data systems.
 ---
 
 {% include_relative _includes/home_research_summary.md %}
