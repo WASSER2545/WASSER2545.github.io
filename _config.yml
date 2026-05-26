@@ -286,8 +286,8 @@ display_categories: ['research'] # these categories will be displayed on the fro
 
 scholar:
 
-  last_name: [Mang]
-  first_name: [Qiuyang]
+  last_name: [Wang]
+  first_name: [Zhengle]
 
   style: apa
   locale: en

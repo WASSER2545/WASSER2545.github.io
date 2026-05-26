@@ -78,6 +78,9 @@
         <div class="pub-author">
         {%- assign author_array_size = entry.author_array | size -%}
         {%- assign author_array_limit = author_array_size -%}
+        {%- if site.max_authors -%}
+          {%- assign author_array_limit = site.max_authors -%}
+        {%- endif -%}
 
         {%- for author in entry.author_array limit: author_array_limit -%}
           {%- assign author_is_self = false -%}

@@ -985,3 +985,8 @@ nav[data-toggle="toc"] {
     padding-top: 0.5rem;
   }
 }
+
+// Highlight self in author list
+.pub-author strong {
+  text-decoration: underline;
+}
