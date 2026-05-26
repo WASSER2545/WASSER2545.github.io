@@ -1415,7 +1415,6 @@ h2:first-child {
   background: #ffffff;
   border: 1px solid #e0e6ec;
   border-radius: 8px;
-  box-shadow: 0 18px 44px rgba(33, 45, 57, 0.08);
   margin: 0 auto;
   max-width: 760px;
   padding: 3rem 3.4rem;
@@ -1427,11 +1426,14 @@ h2:first-child {
 }
 
 .post-title {
+  border-bottom: 0;
   color: #043361;
   font-size: 2rem;
   font-weight: 600;
+  letter-spacing: 0;
   line-height: 1.2;
   margin: 0 0 0.35rem;
+  padding-bottom: 0;
 }
 
 .post-meta {
@@ -1588,47 +1590,6 @@ h2:first-child {
   display: block;
 }
 
-/* --- Table of Contents (inline, al-folio style) --- */
-#table-of-contents {
-  background: #f7fafc;
-  border: 1px solid #e1e8ef;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  padding: 0.9rem 1.2rem;
-}
-
-#table-of-contents::before {
-  color: #043361;
-  content: "Contents";
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-}
-
-#table-of-contents ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#table-of-contents li {
-  margin-bottom: 0;
-  padding: 0.1rem 0;
-}
-
-#table-of-contents a {
-  color: #043361;
-  font-size: 0.88rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-#table-of-contents a:hover {
-  color: #0b6fb8;
-  text-decoration: underline;
-}
-
 /* --- Dark mode: post --- */
 @media (prefers-color-scheme: dark) {
   .post-title,
@@ -1687,20 +1648,6 @@ h2:first-child {
   .post {
     background: #252937;
     border-color: rgba(87, 97, 121, 0.7);
-    box-shadow: none;
-  }
-
-  #table-of-contents {
-    background: rgba(37, 41, 55, 0.7);
-    border-color: rgba(87, 97, 121, 0.5);
-  }
-
-  #table-of-contents::before {
-    color: rgb(62, 183, 240);
-  }
-
-  #table-of-contents a {
-    color: rgb(62, 183, 240);
   }
 }
 

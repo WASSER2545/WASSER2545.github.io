@@ -44,8 +44,6 @@
         </header>
 
         <article class="post-content">
-          <div id="table-of-contents"><ul id="toc-list"></ul></div>
-          <hr id="toc-hr" style="display:none;">
           <div id="markdown-content">
             {{ content }}
           </div>
@@ -63,26 +61,6 @@
     {% if site.google_analytics %}
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','{{ site.google_analytics }}','auto');ga('send','pageview');</script>
     {% endif %}
-
-    <!-- TOC generation -->
-    <script>
-    (function(){
-      var toc=document.getElementById('toc-list');
-      var content=document.getElementById('markdown-content');
-      if(!toc||!content)return;
-      var headings=content.querySelectorAll('h2,h3');
-      if(headings.length<3){document.getElementById('table-of-contents').style.display='none';document.getElementById('toc-hr').style.display='none';return;}
-      document.getElementById('toc-hr').style.display='';
-      headings.forEach(function(h,i){
-        if(!h.id)h.id='section-'+i;
-        var li=document.createElement('li');
-        li.style.marginLeft=(h.tagName==='H3'?'1.2rem':'0');
-        var a=document.createElement('a');
-        a.href='#'+h.id;a.textContent=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    })();
-    </script>
 
     {% if page.bilingual %}
     <script>
