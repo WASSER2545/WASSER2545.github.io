@@ -18,7 +18,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3.5"
-          bundler-cache: true
       - name: Install and Build
         run: |
           sudo -S -p '' apt-get update && sudo -S -p '' apt-get install -y imagemagick
