@@ -1407,28 +1407,47 @@ h2:first-child {
 }
 
 /* ========================================
-   NOTE ARTICLE (al-folio post.html style)
+   NOTE ARTICLE
    ======================================== */
 
-/* --- Post — no card, no box, just flowing text --- */
-.post {
-  max-width: none;
+/* --- Page body --- */
+.note-topbar {
+  align-items: center;
+  border-bottom: 1px solid #e1e8ef;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 2.5rem;
+  max-width: 760px;
+  padding: 0.8rem 0;
 }
 
-/* --- Post header --- */
+.note-topbar a {
+  color: #47657d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.note-topbar a:hover {
+  color: #043361;
+}
+
+/* --- Post --- */
+.post {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
 .post-header {
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 .post-title {
-  border-bottom: 0;
   color: #043361;
   font-size: 2rem;
   font-weight: 600;
-  letter-spacing: 0;
   line-height: 1.2;
   margin: 0 0 0.35rem;
-  padding-bottom: 0;
 }
 
 .post-meta {
@@ -1453,9 +1472,7 @@ h2:first-child {
   color: #043361;
 }
 
-/* --- Post content --- */
 .post-content {
-  color: #4f4f4f;
   font-size: 1.02rem;
   line-height: 1.72;
 }
@@ -1483,9 +1500,7 @@ h2:first-child {
   margin: 1.2rem 0 0.5rem;
 }
 
-.post-content p {
-  margin-bottom: 1rem;
-}
+.post-content p { margin-bottom: 1rem; }
 
 .post-content ul,
 .post-content ol {
@@ -1493,9 +1508,7 @@ h2:first-child {
   padding-left: 1.5rem;
 }
 
-.post-content li {
-  margin-bottom: 0.3rem;
-}
+.post-content li { margin-bottom: 0.3rem; }
 
 .post-content blockquote {
   background: #f7fafc;
@@ -1507,9 +1520,7 @@ h2:first-child {
   padding: 0.9rem 1.1rem;
 }
 
-.post-content blockquote p:last-child {
-  margin-bottom: 0;
-}
+.post-content blockquote p:last-child { margin-bottom: 0; }
 
 .post-content code {
   background: #f4f7f9;
@@ -1526,8 +1537,8 @@ h2:first-child {
   border: 1px solid #e4ebf0;
   border-radius: 6px;
   max-width: 100%;
-  padding: 0.9rem 1rem;
   overflow-x: auto;
+  padding: 0.9rem 1rem;
 }
 
 .post-content pre code {
@@ -1571,44 +1582,33 @@ h2:first-child {
   margin: 1.5rem 0;
 }
 
-/* --- Language switch (inside post header) --- */
-.note-language-switch {
-  margin-top: 0.75rem;
+.note-language-switch { margin-top: 0.75rem; }
+
+.note-language-panel { display: none; }
+.note-language-panel.is-active { display: block; }
+
+.note-comments {
+  margin: 3rem auto 0;
+  max-width: 760px;
 }
 
-/* --- Note language panels --- */
-.note-language-panel {
-  display: none;
-}
-
-.note-language-panel.is-active {
-  display: block;
-}
-
-/* --- Dark mode: post --- */
+/* --- Dark mode --- */
 @media (prefers-color-scheme: dark) {
+  .note-topbar { border-bottom-color: rgba(87, 97, 121, 0.5); }
+  .note-topbar a { color: #9fc8e6; }
+  .note-topbar a:hover { color: rgb(62, 183, 240); }
+
   .post-title,
   .post-content h2,
   .post-content h3,
-  .post-content h4 {
-    color: rgb(62, 183, 240);
-  }
+  .post-content h4 { color: rgb(62, 183, 240); }
 
-  .post-content {
-    color: #c9d1d8;
-  }
+  .post-content { color: #c9d1d8; }
+  .post-content h2 { border-bottom-color: rgba(87, 97, 121, 0.5); }
+  .post-meta { color: #7d92a8; }
 
-  .post-content h2 {
-    border-bottom-color: rgba(87, 97, 121, 0.5);
-  }
-
-  .post-tags a {
-    color: #9fc8e6;
-  }
-
-  .post-tags a:hover {
-    color: rgb(62, 183, 240);
-  }
+  .post-tags a { color: #9fc8e6; }
+  .post-tags a:hover { color: rgb(62, 183, 240); }
 
   .post-content blockquote {
     background: rgba(62, 183, 240, 0.06);
@@ -1632,20 +1632,20 @@ h2:first-child {
     border-color: rgba(87, 97, 121, 0.5);
   }
 
-  .post-content td {
-    border-color: rgba(87, 97, 121, 0.5);
-  }
-
-  .post-meta {
-    color: #7d92a8;
-  }
+  .post-content td { border-color: rgba(87, 97, 121, 0.5); }
 }
 
-/* --- Responsive: post --- */
+/* --- Responsive --- */
 @media print, screen and (max-width: 960px) {
-  .post-title {
-    font-size: 1.6rem;
+  .note-topbar,
+  .post,
+  .note-comments {
+    max-width: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+
+  .post-title { font-size: 1.6rem; }
 }
 
 /* --- Notes listing page (card style) --- */
