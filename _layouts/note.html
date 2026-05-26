@@ -32,23 +32,26 @@
         <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
       </nav>
 
-      <article class="note-article">
-        <!-- Article header -->
-        <header class="note-header">
-          <h1 class="note-title">{{ page.title }}</h1>
-          {% if page.date %}
-          <p class="note-meta">
-            <i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %-d, %Y" }}
+      <div class="post">
+
+        <header class="post-header">
+          <h1 class="post-title">{{ page.title }}</h1>
+          <p class="post-meta">
+            {{ page.date | date: "%B %-d, %Y" }}
             {% if page.author %} · {{ page.author }}{% endif %}
           </p>
-          {% endif %}
-          {% if page.tags %}
-          <p class="note-meta-tags">
+          <p class="post-tags">
+            {% if page.date %}
+            {% assign year = page.date | date: "%Y" %}
+            <a href="{{ year | prepend: '/notes/' | relative_url }}"><i class="fas fa-calendar fa-sm"></i> {{ year }}</a>
+            {% endif %}
+            {% if page.tags %}
+            &nbsp; &middot; &nbsp;
             {% for tag in page.tags %}
-            <span class="note-tag">#{{ tag }}</span>
+            <a href="{{ tag | slugify | prepend: '/notes/tag/' | relative_url }}"><i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a> &nbsp;
             {% endfor %}
+            {% endif %}
           </p>
-          {% endif %}
         </header>
 
         {% if page.bilingual %}
@@ -58,21 +61,13 @@
         </div>
         {% endif %}
 
-        <div class="note-body-layout">
-          <!-- Table of Contents (sidebar on wide screens, collapsible on narrow) -->
-          <nav class="note-toc" id="note-toc" aria-label="Table of Contents">
-            <details open>
-              <summary>Contents</summary>
-              <ul id="note-toc-list"></ul>
-            </details>
-          </nav>
-
-          <!-- Article body -->
-          <div class="note-content" id="note-content">
+        <article class="post-content">
+          <div id="markdown-content">
             {{ content }}
           </div>
-        </div>
-      </article>
+        </article>
+
+      </div>
 
       <section class="note-comments" aria-label="Comments">
         <h2>Comments / 留言</h2>
@@ -98,35 +93,6 @@
       ga('send', 'pageview');
     </script>
     {% endif %}
-
-    <!-- TOC auto-generation -->
-    <script>
-      (function() {
-        var content = document.getElementById('note-content');
-        var tocList = document.getElementById('note-toc-list');
-        if (!content || !tocList) return;
-
-        var headings = content.querySelectorAll('h2, h3');
-        if (headings.length < 2) {
-          document.getElementById('note-toc').style.display = 'none';
-          return;
-        }
-
-        headings.forEach(function(h, i) {
-          // Add anchor ID if missing
-          if (!h.id) {
-            h.id = 'section-' + i;
-          }
-          var li = document.createElement('li');
-          li.className = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
-          var a = document.createElement('a');
-          a.href = '#' + h.id;
-          a.textContent = h.textContent;
-          li.appendChild(a);
-          tocList.appendChild(li);
-        });
-      })();
-    </script>
 
     {% if page.bilingual %}
     <script>

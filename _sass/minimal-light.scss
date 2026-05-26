@@ -1406,113 +1406,57 @@ h2:first-child {
   }
 }
 
-/* --- Note article header --- */
-.note-header {
-  margin-bottom: 1.8rem;
+/* ========================================
+   NOTE ARTICLE (al-folio post.html style)
+   ======================================== */
+
+/* --- Post container --- */
+.post {
+  margin: 0 auto;
+  max-width: 760px;
 }
 
-.note-title {
-  border-bottom: 0;
+/* --- Post header --- */
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-title {
   color: #043361;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.2;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
 }
 
-.note-meta {
+.post-meta {
   color: #6d8294;
   font-size: 0.92rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
-.note-meta i {
-  margin-right: 0.25rem;
-}
-
-.note-meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0;
-}
-
-.note-tag {
-  background: #eef4f8;
-  border-radius: 4px;
-  color: #47657d;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.15rem 0.55rem;
-}
-
-/* --- Note body layout (TOC sidebar + content) --- */
-.note-body-layout {
-  display: flex;
-  gap: 2rem;
-}
-
-.note-body-layout .note-content {
-  flex: 1;
-  min-width: 0;
-}
-
-/* --- TOC (Table of Contents) --- */
-.note-toc {
-  flex-shrink: 0;
-  width: 200px;
-}
-
-.note-toc details {
-  background: #f7fafc;
-  border: 1px solid #e1e8ef;
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
-  position: sticky;
-  top: 1.5rem;
-}
-
-.note-toc details summary {
-  color: #043361;
-  cursor: pointer;
+.post-tags {
   font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-  user-select: none;
-}
-
-.note-toc ul {
-  list-style: none;
-  margin: 0.3rem 0 0;
-  padding: 0;
-}
-
-.note-toc li {
   margin-bottom: 0;
-  padding: 0.12rem 0;
 }
 
-.toc-h2 a {
+.post-tags a {
+  color: #47657d;
+  font-weight: 500;
+}
+
+.post-tags a:hover {
   color: #043361;
-  font-size: 0.88rem;
-  font-weight: 600;
 }
 
-.toc-h3 {
-  padding-left: 0.8rem;
+/* --- Post content --- */
+.post-content {
+  color: #4f4f4f;
+  font-size: 1.02rem;
+  line-height: 1.72;
 }
 
-.toc-h3 a {
-  color: #5a7898;
-  font-size: 0.84rem;
-}
-
-.note-toc a:hover {
-  color: #0b6fb8;
-}
-
-/* --- Note content typography --- */
-.note-content h2 {
+.post-content h2 {
   border-bottom: 1px solid #e1e8ef;
   color: #043361;
   font-size: 1.35rem;
@@ -1521,38 +1465,35 @@ h2:first-child {
   padding-bottom: 0.4rem;
 }
 
-.note-content h3 {
+.post-content h3 {
   color: #043361;
   font-size: 1.12rem;
   font-weight: 600;
   margin: 1.5rem 0 0.6rem;
 }
 
-.note-content h4 {
+.post-content h4 {
   color: #043361;
   font-size: 1.02rem;
   font-weight: 600;
   margin: 1.2rem 0 0.5rem;
 }
 
-.note-content p {
-  font-size: 1.02rem;
-  line-height: 1.72;
+.post-content p {
   margin-bottom: 1rem;
 }
 
-.note-content ul,
-.note-content ol {
+.post-content ul,
+.post-content ol {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
 }
 
-.note-content li {
-  line-height: 1.65;
+.post-content li {
   margin-bottom: 0.3rem;
 }
 
-.note-content blockquote {
+.post-content blockquote {
   background: #f7fafc;
   border-left: 4px solid #7aa6c7;
   border-radius: 0 8px 8px 0;
@@ -1562,11 +1503,11 @@ h2:first-child {
   padding: 0.9rem 1.1rem;
 }
 
-.note-content blockquote p:last-child {
+.post-content blockquote p:last-child {
   margin-bottom: 0;
 }
 
-.note-content code {
+.post-content code {
   background: #f4f7f9;
   border: 1px solid #e4ebf0;
   border-radius: 4px;
@@ -1576,29 +1517,30 @@ h2:first-child {
   padding: 0.05em 0.3em;
 }
 
-.note-content pre {
+.post-content pre {
   background: #f4f7f9;
   border: 1px solid #e4ebf0;
   border-radius: 6px;
   max-width: 100%;
   padding: 0.9rem 1rem;
+  overflow-x: auto;
 }
 
-.note-content pre code {
+.post-content pre code {
   background: transparent;
   border: 0;
   color: inherit;
   padding: 0;
 }
 
-.note-content table {
+.post-content table {
   border-collapse: collapse;
   font-size: 0.95rem;
   margin: 1rem 0 1.2rem;
   width: 100%;
 }
 
-.note-content th {
+.post-content th {
   background: #f4f7f9;
   border: 1px solid #e1e8ef;
   color: #043361;
@@ -1606,91 +1548,91 @@ h2:first-child {
   padding: 0.45rem 0.7rem;
 }
 
-.note-content td {
+.post-content td {
   border: 1px solid #e1e8ef;
   padding: 0.4rem 0.7rem;
 }
 
-.note-content img {
+.post-content img {
   border-radius: 6px;
   display: block;
   margin: 1.2rem auto;
   max-width: 100%;
 }
 
-.note-content hr {
+.post-content hr {
   background: #e1e8ef;
   border: 0;
   height: 1px;
   margin: 1.5rem 0;
 }
 
+/* --- Language switch (inside note article) --- */
+.note-language-switch {
+  margin-bottom: 1.25rem;
+}
+
+/* --- Note language panels --- */
+.note-language-panel {
+  display: none;
+}
+
+.note-language-panel.is-active {
+  display: block;
+}
+
+/* --- Dark mode: post --- */
 @media (prefers-color-scheme: dark) {
-  .note-title,
-  .note-content h2,
-  .note-content h3,
-  .note-content h4 {
+  .post-title,
+  .post-content h2,
+  .post-content h3,
+  .post-content h4 {
     color: rgb(62, 183, 240);
   }
 
-  .note-content h2 {
+  .post-content {
+    color: #c9d1d8;
+  }
+
+  .post-content h2 {
     border-bottom-color: rgba(87, 97, 121, 0.5);
   }
 
-  .note-toc {
-    background: rgba(37, 41, 55, 0.7);
-    border-color: rgba(87, 97, 121, 0.5);
-  }
-
-  .note-toc details {
-    background: rgba(37, 41, 55, 0.7);
-    border-color: rgba(87, 97, 121, 0.5);
-  }
-
-  .note-toc details summary {
-    color: rgb(62, 183, 240);
-  }
-
-  .toc-h2 a {
-    color: rgb(62, 183, 240);
-  }
-
-  .toc-h3 a {
+  .post-tags a {
     color: #9fc8e6;
   }
 
-  .note-tag {
-    background: rgba(62, 183, 240, 0.12);
-    color: #9fc8e6;
+  .post-tags a:hover {
+    color: rgb(62, 183, 240);
   }
 
-  .note-content blockquote {
+  .post-content blockquote {
     background: rgba(62, 183, 240, 0.06);
     border-left-color: rgb(62, 183, 240);
     color: #c9d1d8;
   }
 
-  .note-content code {
+  .post-content code {
     background: rgba(238, 239, 240, 0.07);
     border-color: rgba(238, 239, 240, 0.14);
     color: #dcecf5;
   }
 
-  .note-content pre {
+  .post-content pre {
     background: rgba(238, 239, 240, 0.05);
     border-color: rgba(238, 239, 240, 0.14);
   }
 
-  .note-content th {
+  .post-content th {
     background: rgba(62, 183, 240, 0.08);
     border-color: rgba(87, 97, 121, 0.5);
   }
 
-  .note-content td {
+  .post-content td {
     border-color: rgba(87, 97, 121, 0.5);
   }
 
-  .note-meta {
+  .post-meta {
     color: #7d92a8;
   }
 }
@@ -1797,19 +1739,6 @@ h2:first-child {
   .hero-card {
     padding: 1.3rem 1.2rem;
   }
-
-  .note-body-layout {
-    display: block;
-  }
-
-  .note-toc {
-    width: 100%;
-    margin-bottom: 1.5rem;
-  }
-
-  .note-toc details {
-    position: static;
-  }
 }
 
 @media print, screen and (max-width: 480px) {
@@ -1825,28 +1754,16 @@ h2:first-child {
     padding: 0.9rem 1rem;
   }
 
-  .note-toc {
-    width: 100%;
-    margin-bottom: 1.2rem;
-  }
-
-  .note-toc details {
-    padding: 0.6rem 0.8rem;
-  }
-
-  .note-title {
+  .post-title {
     font-size: 1.6rem;
   }
 
-  .note-article {
+  .note-article,
+  .note-comments {
     padding: 1.2rem 1rem;
   }
 
-  .note-comments {
-    padding: 1rem 1rem 1.5rem;
-  }
-
-  .note-content pre {
+  .post-content pre {
     padding: 0.6rem 0.7rem;
   }
 
