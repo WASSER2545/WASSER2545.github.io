@@ -1412,13 +1412,18 @@ h2:first-child {
 
 /* --- Post container --- */
 .post {
+  background: #ffffff;
+  border: 1px solid #e0e6ec;
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(33, 45, 57, 0.08);
   margin: 0 auto;
   max-width: 760px;
+  padding: 3rem 3.4rem;
 }
 
 /* --- Post header --- */
 .post-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 }
 
 .post-title {
@@ -1431,18 +1436,20 @@ h2:first-child {
 
 .post-meta {
   color: #6d8294;
-  font-size: 0.92rem;
-  margin-bottom: 0.3rem;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
 }
 
 .post-tags {
-  font-size: 0.9rem;
+  color: #6d8294;
+  font-size: 0.875rem;
   margin-bottom: 0;
 }
 
 .post-tags a {
   color: #47657d;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .post-tags a:hover {
@@ -1567,9 +1574,9 @@ h2:first-child {
   margin: 1.5rem 0;
 }
 
-/* --- Language switch (inside note article) --- */
+/* --- Language switch (inside post header) --- */
 .note-language-switch {
-  margin-bottom: 1.25rem;
+  margin-top: 0.75rem;
 }
 
 /* --- Note language panels --- */
@@ -1579,6 +1586,47 @@ h2:first-child {
 
 .note-language-panel.is-active {
   display: block;
+}
+
+/* --- Table of Contents (inline, al-folio style) --- */
+#table-of-contents {
+  background: #f7fafc;
+  border: 1px solid #e1e8ef;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  padding: 0.9rem 1.2rem;
+}
+
+#table-of-contents::before {
+  color: #043361;
+  content: "Contents";
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+#table-of-contents ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#table-of-contents li {
+  margin-bottom: 0;
+  padding: 0.1rem 0;
+}
+
+#table-of-contents a {
+  color: #043361;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#table-of-contents a:hover {
+  color: #0b6fb8;
+  text-decoration: underline;
 }
 
 /* --- Dark mode: post --- */
@@ -1634,6 +1682,25 @@ h2:first-child {
 
   .post-meta {
     color: #7d92a8;
+  }
+
+  .post {
+    background: #252937;
+    border-color: rgba(87, 97, 121, 0.7);
+    box-shadow: none;
+  }
+
+  #table-of-contents {
+    background: rgba(37, 41, 55, 0.7);
+    border-color: rgba(87, 97, 121, 0.5);
+  }
+
+  #table-of-contents::before {
+    color: rgb(62, 183, 240);
+  }
+
+  #table-of-contents a {
+    color: rgb(62, 183, 240);
   }
 }
 
