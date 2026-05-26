@@ -1,7 +1,3 @@
-# Agentic System Workload Optimization
-
-Date: May 23, 2026
-
 ## 0. Positioning
 
 **Agentic System Workload Optimization: From Query Plans to Agent-Native Serving**

@@ -1,7 +1,3 @@
-# Agentic System Workload Optimization
-
-日期：2026-05-23
-
 ## 0. 定位
 
 **Agentic System Workload Optimization: From Query Plans to Agent-Native Serving**

@@ -1446,21 +1446,39 @@ h2:first-child {
   padding: 0.15rem 0.55rem;
 }
 
+/* --- Note body layout (TOC sidebar + content) --- */
+.note-body-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.note-body-layout .note-content {
+  flex: 1;
+  min-width: 0;
+}
+
 /* --- TOC (Table of Contents) --- */
 .note-toc {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.note-toc details {
   background: #f7fafc;
   border: 1px solid #e1e8ef;
   border-radius: 8px;
-  margin-bottom: 2rem;
-  padding: 0.8rem 1.1rem;
+  padding: 0.8rem 1rem;
+  position: sticky;
+  top: 1.5rem;
 }
 
 .note-toc details summary {
   color: #043361;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.35rem;
+  user-select: none;
 }
 
 .note-toc ul {
@@ -1471,22 +1489,22 @@ h2:first-child {
 
 .note-toc li {
   margin-bottom: 0;
-  padding: 0.15rem 0;
+  padding: 0.12rem 0;
 }
 
 .toc-h2 a {
   color: #043361;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 600;
 }
 
 .toc-h3 {
-  padding-left: 1rem;
+  padding-left: 0.8rem;
 }
 
 .toc-h3 a {
   color: #5a7898;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
 }
 
 .note-toc a:hover {
@@ -1620,6 +1638,11 @@ h2:first-child {
   }
 
   .note-toc {
+    background: rgba(37, 41, 55, 0.7);
+    border-color: rgba(87, 97, 121, 0.5);
+  }
+
+  .note-toc details {
     background: rgba(37, 41, 55, 0.7);
     border-color: rgba(87, 97, 121, 0.5);
   }
@@ -1774,6 +1797,19 @@ h2:first-child {
   .hero-card {
     padding: 1.3rem 1.2rem;
   }
+
+  .note-body-layout {
+    display: block;
+  }
+
+  .note-toc {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .note-toc details {
+    position: static;
+  }
 }
 
 @media print, screen and (max-width: 480px) {
@@ -1790,7 +1826,11 @@ h2:first-child {
   }
 
   .note-toc {
+    width: 100%;
     margin-bottom: 1.2rem;
+  }
+
+  .note-toc details {
     padding: 0.6rem 0.8rem;
   }
 

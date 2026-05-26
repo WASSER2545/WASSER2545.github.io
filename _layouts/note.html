@@ -58,17 +58,19 @@
         </div>
         {% endif %}
 
-        <!-- Table of Contents (auto-generated from h2/h3) -->
-        <nav class="note-toc" id="note-toc" aria-label="Table of Contents">
-          <details open>
-            <summary>Contents</summary>
-            <ul id="note-toc-list"></ul>
-          </details>
-        </nav>
+        <div class="note-body-layout">
+          <!-- Table of Contents (sidebar on wide screens, collapsible on narrow) -->
+          <nav class="note-toc" id="note-toc" aria-label="Table of Contents">
+            <details open>
+              <summary>Contents</summary>
+              <ul id="note-toc-list"></ul>
+            </details>
+          </nav>
 
-        <!-- Article body -->
-        <div class="note-content" id="note-content">
-          {{ content }}
+          <!-- Article body -->
+          <div class="note-content" id="note-content">
+            {{ content }}
+          </div>
         </div>
       </article>
 
