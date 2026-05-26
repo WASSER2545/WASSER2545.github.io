@@ -1410,14 +1410,9 @@ h2:first-child {
    NOTE ARTICLE (al-folio post.html style)
    ======================================== */
 
-/* --- Post container --- */
+/* --- Post — no card, no box, just flowing text --- */
 .post {
-  background: #ffffff;
-  border: 1px solid #e0e6ec;
-  border-radius: 8px;
-  margin: 0 auto;
-  max-width: 760px;
-  padding: 3rem 3.4rem;
+  max-width: none;
 }
 
 /* --- Post header --- */
@@ -1644,10 +1639,12 @@ h2:first-child {
   .post-meta {
     color: #7d92a8;
   }
+}
 
-  .post {
-    background: #252937;
-    border-color: rgba(87, 97, 121, 0.7);
+/* --- Responsive: post --- */
+@media print, screen and (max-width: 960px) {
+  .post-title {
+    font-size: 1.6rem;
   }
 }
 
