@@ -18,36 +18,17 @@ selected_papers: true
 social: true
 ---
 
-I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University, advised by [Prof. Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html). I received my B.E. in Artificial Intelligence from China Agricultural University (2021–2026).
+I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University advised by [Prof. Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html).
 
-My research interests span **AI for databases (AI4DB)**, **database benchmark testing**, **cloud database systems**, and **recommender systems**. I build systems and tools that bridge the gap between academic evaluation and real-world production workloads.
+My research interests are in **database systems** and **cloud data analytics systems**, with a particular focus on workload generation, query optimization, and performance evaluation for modern cloud-native OLAP databases.
 
-**Technical Skills:** Python, C++, Go, SQL. Native in Mandarin, fluent in English (TOEFL 103).
+Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on projects related to cloud database benchmarking and system optimization. I also worked on large-scale recommendation and search systems through research and engineering internships in industry.
 
-## Research Experience
+My current research focuses on **realistic execution-aware workload synthesis** for cloud OLAP systems, aiming to bridge the gap between academic evaluation and real-world production workloads. More broadly, I am interested in learned system optimization, AI for systems, and agentic infrastructure for data-intensive applications.
 
-**Realistic Workload Synthesis for Cloud OLAP Databases** (Jun 2025 – Present)
-*Purdue University · Advisor: Prof. Chunwei Liu*
-- Proposed an execution-aware query generation framework (ResQ) for cloud OLAP systems that synthesizes SQL workloads under both structural and runtime performance constraints.
-- Designed a two-phase operator-tree generation pipeline combining data-aware search space bounding and execution-aware refinement.
-- Developed Bayesian optimization–based predicate tuning and lightweight operator-level performance models to match target execution characteristics.
-
-**Workload Synthesis Project (PVLDB 2025)** (Sep 2023 – Jun 2025)
-*Renmin University of China · Advisors: Prof. Ju Fan, Prof. Chunwei Liu, Prof. Bhuvan Urgaonkar*
-- Proposed the first workload synthesis tool (PBench) achieving concurrent matching of performance metrics and operator distributions.
-- Replayed and analyzed related methods (Stitchers, CAB) on datasets including Snowset and Redset.
-- Explored LLM-based query-pool augmentation for the synthesis framework.
-
-**Integrated System for Pest Classification** (Sep 2022 – Jun 2025)
-*China Agricultural University · Advisors: Prof. Peng Chee (UGA), Prof. Minjuan Wang, Prof. Haihua Wang*
-- Designed deep learning architectures for agricultural pest and disease classification, including contrastive learning and masked image modeling frameworks.
-- Built a lightweight cotton disease detection network (RF-Cott-Net) optimized for edge deployment.
-- Led construction of large-scale plant disease datasets and experimental validation.
-
-**RecBole Recommendation Framework** (Feb 2023 – Jul 2023)
-*Renmin University of China · Advisor: Prof. Xin Zhao*
-- Replicated classical sequential recommendation models (SASRec, S3Rec) using the RecBole framework.
-- Reimplemented the SURGE model for sequential recommendation; contribution merged into the official open-source repository.
+**Research Themes:**
+- **Cloud OLAP Systems & Benchmarking**: Realistic workload synthesis, execution-aware query generation, query optimization, and performance evaluation.
+- **Agentic Systems Infrastructure**: Infrastructure and evaluation frameworks for agentic systems, including scalable data collection, trajectory management, and execution environments.
 
 ## Industry Experience
 
@@ -61,14 +42,9 @@ My research interests span **AI for databases (AI4DB)**, **database benchmark te
 *Hotel & Travel Recommendation Team · Beijing, China*
 - Explored cross-domain recommendation modeling across hotel, homestay, and ticket-booking scenarios.
 - Designed multi-scenario recommendation architectures with shared representations and scenario-specific adaptation.
-- Conducted feature fusion and representation analysis for multi-domain recommendation systems.
 
 **Machine Learning Intern, Poizon Inc.** (Jun 2024 – Mar 2025)
 *Community Search Team · Beijing, China*
 - Developed relevance-aware reranking models for large-scale content search, improving offline AUC by 0.2pp.
 - Improved personalized pre-ranking with PPNet encoders and listwise ranking objectives (+0.3pp online QVCTR).
 - Designed relevance-oriented pre-ranking via knowledge distillation from downstream ranking models (+0.8pp offline AUC).
-
-## Selected Awards
-
-- Academic Scholarship, China Agricultural University (2022, 2023, 2025)
