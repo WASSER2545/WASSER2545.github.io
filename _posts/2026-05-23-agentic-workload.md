@@ -507,15 +507,8 @@ Open questions:
 - How much do tool latency, network latency, and human-in-the-loop latency contribute to end-to-end time?
 - How much do dynamic replanning, failure/retry, and self-correction affect system scheduling?
 
-## 8. Industry Notes
+## 8. Closing Thoughts
 
-I recently discussed agentic workload testing and benchmarking with people in industry.
+As agentic systems mature, I see their serving infrastructure evolving along a trajectory similar to the commercialization of database systems. vLLM's recent Pageflow framework, for instance, decouples the KV cache layer from compute and organizes it into a three-tier storage hierarchy — echoing Snowflake's separation of storage and compute.
 
-1. Traditional replay is extremely difficult and expensive in agentic systems. At ByteDance, for example, they record intent information and device information to help reproduce behavior.
-2. Agentic system providers each have their own internal performance benchmarks, such as coding tasks. However, because these benchmarks involve business secrets, they are unlikely to be released.
-
-## 9. My Thoughts
-
-Based on current signals, I think agentic system serving is increasingly moving along a path similar to the commercialization of database systems. For example, vLLM recently designed a Pageflow framework to separate the KV cache layer from the compute layer and organize it into three storage tiers. This design resembles Snowflake-style separation of storage and compute.
-
-At the same time, as large internet companies increasingly care about the ability of agentic systems to write code for large projects, enterprise requests are quickly diverging from ordinary consumer requests. These requests impose rapidly growing demands on context length and KV cache. I believe this will accelerate the movement of agentic companies toward OLAP-like pricing and business models.
+Meanwhile, enterprise demand for agentic systems that can tackle large-scale software engineering projects is driving a rapid divergence between enterprise and consumer request patterns. These enterprise workloads impose steep and growing demands on context length and KV cache capacity. I expect this trend will push agentic infrastructure companies toward OLAP-style pricing models and resource management strategies.
