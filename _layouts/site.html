@@ -82,6 +82,17 @@
         </div>
 
         {% include site-nav.html %}
+
+        <div class="language-switch" style="margin-top: 1rem;" aria-label="Language switch">
+          {% assign current_url = page.url %}
+          {% if current_url contains '/zh/' %}
+          <a href="{{ current_url | replace: '/zh/', '/' | relative_url }}">EN</a>
+          <a class="is-active" href="{{ current_url | relative_url }}">中文</a>
+          {% else %}
+          <a class="is-active" href="{{ current_url | relative_url }}">EN</a>
+          <a href="{{ '/zh/' | relative_url }}">中文</a>
+          {% endif %}
+        </div>
       </header>
 
       <section>
