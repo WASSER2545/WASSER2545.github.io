@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Ph.D. Student in Computer Science at <a href='https://www.purdue.edu/'>Purdue University</a>. B.E. in Artificial Intelligence from <a href='https://www.cau.edu.cn/'>China Agricultural University</a>.
+subtitle: 
 
 profile:
   align: right
