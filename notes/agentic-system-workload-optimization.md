@@ -1,8 +1,12 @@
 ---
-layout: site
+layout: note
 title: Agentic System Workload Optimization
 permalink: /notes/agentic-system-workload-optimization/
 description: Notes on workflow-level optimization for agentic systems, from query plans to agent-native serving.
+lang: en-US
+lang_switch_url: /notes/agentic-system-workload-optimization-zh/
+lang_switch_en_url: /notes/agentic-system-workload-optimization/
+lang_switch_zh_url: /notes/agentic-system-workload-optimization-zh/
 ---
 
 # Agentic System Workload Optimization
