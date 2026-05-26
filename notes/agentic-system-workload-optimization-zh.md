@@ -7,6 +7,8 @@ lang: zh-CN
 notes_url: /notes/zh/
 notes_label: 笔记
 bilingual: true
+date: 2026-05-23
+tags: [agentic-systems, LLM-serving, workload-optimization]
 ---
 
 <div class="note-language-panel" data-note-lang-panel="en" markdown="1">

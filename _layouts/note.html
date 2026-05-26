@@ -21,24 +21,55 @@
     <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon | default: site.favicon_dark | relative_url }}" type="image/png">
     <script src="{{ "/assets/js/favicon-switcher.js" | relative_url }}" type="application/javascript"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/publications.css" | relative_url }}">
   </head>
   <body class="note-page-body">
     <main class="note-page">
       <nav class="note-topbar" aria-label="Note navigation">
-        <a href="{{ page.notes_url | default: "/notes/" | relative_url }}">{{ page.notes_label | default: "Notes" }}</a>
+        <a href="{{ page.notes_url | default: "/notes/" | relative_url }}">{{ page.notes_label | default: "← Notes" }}</a>
         <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
       </nav>
 
       <article class="note-article">
+        <!-- Article header -->
+        <header class="note-header">
+          <h1 class="note-title">{{ page.title }}</h1>
+          {% if page.date %}
+          <p class="note-meta">
+            <i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %-d, %Y" }}
+            {% if page.author %} · {{ page.author }}{% endif %}
+          </p>
+          {% endif %}
+          {% if page.tags %}
+          <p class="note-meta-tags">
+            {% for tag in page.tags %}
+            <span class="note-tag">#{{ tag }}</span>
+            {% endfor %}
+          </p>
+          {% endif %}
+        </header>
+
         {% if page.bilingual %}
         <div class="language-switch note-language-switch" aria-label="Language switch">
           <button class="{% if page.lang != 'zh-CN' %}is-active{% endif %}" type="button" data-note-lang-button="en">EN</button>
           <button class="{% if page.lang == 'zh-CN' %}is-active{% endif %}" type="button" data-note-lang-button="zh">中文</button>
         </div>
         {% endif %}
-        {{ content }}
+
+        <!-- Table of Contents (auto-generated from h2/h3) -->
+        <nav class="note-toc" id="note-toc" aria-label="Table of Contents">
+          <details open>
+            <summary>Contents</summary>
+            <ul id="note-toc-list"></ul>
+          </details>
+        </nav>
+
+        <!-- Article body -->
+        <div class="note-content" id="note-content">
+          {{ content }}
+        </div>
       </article>
 
       <section class="note-comments" aria-label="Comments">
@@ -65,6 +96,36 @@
       ga('send', 'pageview');
     </script>
     {% endif %}
+
+    <!-- TOC auto-generation -->
+    <script>
+      (function() {
+        var content = document.getElementById('note-content');
+        var tocList = document.getElementById('note-toc-list');
+        if (!content || !tocList) return;
+
+        var headings = content.querySelectorAll('h2, h3');
+        if (headings.length < 2) {
+          document.getElementById('note-toc').style.display = 'none';
+          return;
+        }
+
+        headings.forEach(function(h, i) {
+          // Add anchor ID if missing
+          if (!h.id) {
+            h.id = 'section-' + i;
+          }
+          var li = document.createElement('li');
+          li.className = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
+          var a = document.createElement('a');
+          a.href = '#' + h.id;
+          a.textContent = h.textContent;
+          li.appendChild(a);
+          tocList.appendChild(li);
+        });
+      })();
+    </script>
+
     {% if page.bilingual %}
     <script>
       (function() {

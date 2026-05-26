@@ -5,6 +5,8 @@ permalink: /notes/agentic-system-workload-optimization/
 description: Notes on workflow-level optimization for agentic systems, from query plans to agent-native serving.
 lang: en-US
 bilingual: true
+date: 2026-05-23
+tags: [agentic-systems, LLM-serving, workload-optimization]
 ---
 
 <div class="note-language-panel is-active" data-note-lang-panel="en" markdown="1">

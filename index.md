@@ -6,9 +6,11 @@ description: Research overview for Zhengle Wang, a Ph.D. student working on AI f
 
 {% include_relative _includes/home_research_summary.md %}
 
-{% include_relative _includes/home_research_themes.md %}
+{% include_relative _includes/home_news.md %}
 
 {% include_relative _includes/home_selected_publications.md %}
+
+{% include_relative _includes/home_research_themes.md %}
 
 {% include_relative _includes/home_projects.md %}
 
