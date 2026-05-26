@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: /blog/
-title: Notes
-description: Research notes and reading logs.
+title: 
+description:
 ---
 
 <ul class="post-list">
