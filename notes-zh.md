@@ -7,11 +7,6 @@ description: Zhengle Wang 的研究笔记、论文阅读和系统观察。
 
 ## 笔记
 
-<div class="language-switch page-language-switch" aria-label="Language switch">
-  <a href="/notes/">EN</a>
-  <a class="is-active" href="/notes/zh/">中文</a>
-</div>
-
 <div class="notes-index" markdown="1">
 
 这里用来整理研究笔记、论文阅读和系统观察。

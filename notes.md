@@ -7,11 +7,6 @@ description: Research notes and reading logs by Zhengle Wang.
 
 ## Notes
 
-<div class="language-switch page-language-switch" aria-label="Language switch">
-  <a class="is-active" href="/notes/">EN</a>
-  <a href="/notes/zh/">中文</a>
-</div>
-
 <div class="notes-index" markdown="1">
 
 This space collects research notes, paper readings, and system observations.
