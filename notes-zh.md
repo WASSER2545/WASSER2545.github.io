@@ -16,14 +16,6 @@ description: Zhengle Wang 的研究笔记、论文阅读和系统观察。
 
 这个页面用来整理研究笔记、论文阅读和系统观察。
 
-## 最新笔记
-
-<article class="note-card">
-  <p class="note-date">2026 年 5 月 23 日</p>
-  <h3><a href="/notes/agentic-system-workload-optimization-zh/">Agentic System Workload Optimization</a></h3>
-  <p>关于 agentic system workflow-level optimization 的阅读笔记：从 query plan 到 agent-native serving。</p>
-</article>
-
 ## 主题
 
 我计划把这里用于整理：
@@ -34,5 +26,13 @@ description: Zhengle Wang 的研究笔记、论文阅读和系统观察。
 - 博士阶段的一些研究思考
 
 后续这个页面会逐步从静态主页扩展成一个更有用的研究笔记入口。
+
+## 最新笔记
+
+<article class="note-card">
+  <p class="note-date">2026 年 5 月 23 日</p>
+  <h3><a href="/notes/agentic-system-workload-optimization-zh/">Agentic System Workload Optimization</a></h3>
+  <p>关于 agentic system workflow-level optimization 的阅读笔记：从 query plan 到 agent-native serving。</p>
+</article>
 
 </div>

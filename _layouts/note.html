@@ -28,21 +28,21 @@
     <main class="note-page">
       <nav class="note-topbar" aria-label="Note navigation">
         <a href="{{ page.notes_url | default: "/notes/" | relative_url }}">{{ page.notes_label | default: "Notes" }}</a>
-        {% if page.lang_switch_url %}
-        <div class="language-switch" aria-label="Language switch">
-          <a class="{% if page.lang != 'zh-CN' %}is-active{% endif %}" href="{{ page.lang_switch_en_url | default: page.url | relative_url }}">EN</a>
-          <a class="{% if page.lang == 'zh-CN' %}is-active{% endif %}" href="{{ page.lang_switch_zh_url | default: page.lang_switch_url | relative_url }}">中文</a>
-        </div>
-        {% endif %}
         <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
       </nav>
 
       <article class="note-article">
+        {% if page.bilingual %}
+        <div class="language-switch note-language-switch" aria-label="Language switch">
+          <button class="{% if page.lang != 'zh-CN' %}is-active{% endif %}" type="button" data-note-lang-button="en">EN</button>
+          <button class="{% if page.lang == 'zh-CN' %}is-active{% endif %}" type="button" data-note-lang-button="zh">中文</button>
+        </div>
+        {% endif %}
         {{ content }}
       </article>
 
       <section class="note-comments" aria-label="Comments">
-        <h2>{% if page.lang == "zh-CN" %}留言{% else %}Comments{% endif %}</h2>
+        <h2>Comments / 留言</h2>
         <script src="https://utteranc.es/client.js"
           repo="WASSER2545/WASSER2545.github.io"
           issue-term="pathname"
@@ -63,6 +63,27 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', '{{ site.google_analytics }}', 'auto');
       ga('send', 'pageview');
+    </script>
+    {% endif %}
+    {% if page.bilingual %}
+    <script>
+      (function() {
+        var buttons = document.querySelectorAll('[data-note-lang-button]');
+        var panels = document.querySelectorAll('[data-note-lang-panel]');
+        function showLanguage(language) {
+          buttons.forEach(function(button) {
+            button.classList.toggle('is-active', button.getAttribute('data-note-lang-button') === language);
+          });
+          panels.forEach(function(panel) {
+            panel.classList.toggle('is-active', panel.getAttribute('data-note-lang-panel') === language);
+          });
+        }
+        buttons.forEach(function(button) {
+          button.addEventListener('click', function() {
+            showLanguage(button.getAttribute('data-note-lang-button'));
+          });
+        });
+      })();
     </script>
     {% endif %}
   </body>

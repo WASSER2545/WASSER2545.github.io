@@ -737,6 +737,7 @@ footer {
 }
 
 .note-card {
+  background: #ffffff;
   border: 1px solid #dfe8ef;
   border-radius: 8px;
   margin: 0 0 1.35rem;
@@ -777,9 +778,14 @@ footer {
   padding: 0.15rem;
 }
 
-.language-switch a {
+.language-switch a,
+.language-switch button {
+  background: transparent;
+  border: 0;
   border-radius: 999px;
   color: #47657d;
+  cursor: pointer;
+  font-family: inherit;
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1;
@@ -787,7 +793,9 @@ footer {
 }
 
 .language-switch a:hover,
-.language-switch a.is-active {
+.language-switch a.is-active,
+.language-switch button:hover,
+.language-switch button.is-active {
   background: #043361;
   color: #ffffff;
 }
@@ -797,12 +805,19 @@ footer {
 }
 
 .note-article {
+  background: #ffffff;
+  border: 1px solid #e0e6ec;
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(33, 45, 57, 0.08);
   color: #4f4f4f;
   font-size: 1.05rem;
   line-height: 1.7;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: 3rem 3.4rem;
 }
 
-.note-article > h1:first-child {
+.note-language-panel > h1:first-child {
   border-bottom: 1px solid #e2e8ee;
   font-size: 2rem;
   line-height: 1.15;
@@ -855,12 +870,13 @@ footer {
 }
 
 .note-page-body {
+  background: #f3f5f7;
   padding: 0;
 }
 
 .note-page {
   margin: 0 auto;
-  max-width: 820px;
+  max-width: 1040px;
   padding: 2rem 1.5rem 4rem;
 }
 
@@ -884,9 +900,12 @@ footer {
 }
 
 .note-comments {
-  border-top: 1px solid #e2e8ee;
-  margin-top: 3rem;
-  padding-top: 1.35rem;
+  background: #ffffff;
+  border: 1px solid #e0e6ec;
+  border-radius: 8px;
+  margin: 2rem auto 0;
+  max-width: 760px;
+  padding: 1.35rem 3.4rem 2rem;
 }
 
 .note-comments h2 {
@@ -894,6 +913,18 @@ footer {
   font-size: 1.35rem;
   margin: 0 0 1rem;
   padding-top: 0;
+}
+
+.note-language-switch {
+  margin-bottom: 1.25rem;
+}
+
+.note-language-panel {
+  display: none;
+}
+
+.note-language-panel.is-active {
+  display: block;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -920,17 +951,32 @@ footer {
     border-color: rgba(62, 183, 240, 0.25);
   }
 
-  .language-switch a {
+  .note-card,
+  .note-article,
+  .note-comments {
+    background: #252937;
+    border-color: rgba(87, 97, 121, 0.7);
+    box-shadow: none;
+  }
+
+  .note-page-body {
+    background: #181a22;
+  }
+
+  .language-switch a,
+  .language-switch button {
     color: #9fc8e6;
   }
 
   .language-switch a:hover,
-  .language-switch a.is-active {
+  .language-switch a.is-active,
+  .language-switch button:hover,
+  .language-switch button.is-active {
     background: rgb(62, 183, 240);
     color: #20212b;
   }
 
-  .note-article > h1:first-child,
+  .note-language-panel > h1:first-child,
   .note-article h2,
   .note-topbar,
   .note-comments {
@@ -960,14 +1006,20 @@ footer {
 
 @media print, screen and (max-width: 640px) {
   .note-page {
-    padding: 1.2rem 1rem 3rem;
+    padding: 1rem 0.75rem 3rem;
   }
 
   .note-topbar {
     margin-bottom: 1.6rem;
   }
 
-  .note-article > h1:first-child {
+  .note-article,
+  .note-comments {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .note-language-panel > h1:first-child {
     font-size: 1.7rem;
   }
 }
