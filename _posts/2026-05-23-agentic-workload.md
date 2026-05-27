@@ -2,7 +2,9 @@
 layout: post
 title: "Agentic System Workload Optimization"
 date: 2026-05-23
-description: Notes on workflow-level optimization for agentic systems, from query plans to agent-native serving.
+description: From query-plan optimization to agent-native serving, and why agentic systems need macro workload characterization.
+image: /assets/img/blog/agentic-workload-preview.svg
+og_image: /assets/img/blog/agentic-workload-preview.svg
 tags: [agentic-systems, LLM-serving, workload-optimization]
 categories: research
 toc:
@@ -10,171 +12,65 @@ toc:
 ---
 **Agentic System Workload Optimization: From Query Plans to Agent-Native Serving**
 
-The core question:
+The question I care about is simple:
 
-> As LLM applications move from single requests to multi-step, multi-agent, and tool-using workflows, the object of system optimization is no longer a single LLM call. It becomes an agentic workload with structure, state, repetition, and heterogeneous resource phases.
+> As LLM applications move from single calls to multi-step, multi-agent, and tool-using workflows, what exactly should a serving system optimize?
 
-The main thread of this reading note:
+My current answer is that the optimization target is shifting from an isolated LLM request to an **agentic workload**: a structured execution process with dependencies, state, repeated sub-computation, heterogeneous resource phases, and bursty downstream effects.
 
-1. **Halo / Helium**: model agentic workflows as query plans or DAGs from a database and query processing perspective.
-2. **Pythia**: use workflow predictability for proactive runtime optimization from the perspective of production multi-agent serving.
-3. **Scepsy**: allocate resources for arbitrary multi-LLM workflows from the perspective of GPU clusters.
+This note uses four recent papers to trace that shift:
 
-My expected takeaways:
+1. **Halo / Helium** treat agentic workflows as query plans or DAGs.
+2. **Pythia** treats agentic traffic as a predictable production serving workload.
+3. **Scepsy** treats agentic execution as aggregate demand over a GPU cluster.
 
-- The common trend across these papers is a shift from request-level LLM serving toward workflow-level optimization.
-- However, these papers still do not provide enough macro-level characterization of what the agentic workload itself looks like. Workload characterization remains an open problem.
+The papers approach the problem from different layers, but they point to the same direction: LLM serving is becoming workflow-aware. At the same time, they also expose a gap that I find more interesting than any single optimization technique: we still do not have a mature macro-level characterization of agentic workloads themselves.
 
-## 1. Background: Why Agentic Workloads Need New System Optimization
+## 1. From Requests to Workloads
 
-### 1.1 The Optimization Target in Traditional LLM Serving
+Traditional LLM serving mostly optimizes one request or one model invocation at a time. Continuous batching, PagedAttention, prefix caching, speculative decoding, and KV-cache management are all powerful techniques, but the serving layer usually sees requests as approximately independent. It does not know whether a request is the first planner call in a long workflow, a near-final verifier call, or one branch in a fan-out phase.
 
-- A single request or a single model invocation.
-- Typical optimizations include continuous batching, PagedAttention, prefix caching, speculative decoding, and KV cache management.
-- The default assumption is that requests are approximately independent, and the serving layer does not know the structure of the upper-level workflow.
+Agentic workloads break this assumption. A single user task may expand into LLM calls, tool calls, retrieval, SQL/API operations, code execution, and repeated self-correction. These steps have internal dependencies: chains, fan-out/fan-in, loops, tree search, debate, review, and retries. They also create uneven resource phases across GPU prefill/decode, CPU tools, network calls, storage, and context loading.
 
-### 1.2 What Changes in Agentic Workloads
+This is why I think the core of agentic system optimization is not simply making one LLM inference faster. It is making agentic execution understandable, predictable, and schedulable as a workload.
 
-- A user task expands into multiple LLM calls, tool calls, retrieval/API/SQL operations, or code execution steps.
-- The workflow has internal dependencies: chains, fan-out/fan-in, loops, tree search, or multi-agent debate.
-- Across workflows or batches, there may be repeated work: shared prompts, shared prefixes, shared tool results, or shared subgraphs.
-- Resource phases are uneven: GPU prefill/decode, CPU-side tools, network/API calls, and storage/context loading.
-- Traffic may contain structured bursts: requests from an upstream agent can trigger cascades of downstream agent requests.
+## 2. Halo: Workflow as Query Plan
 
-### 1.3 The Vision for Agentic Workload Optimization
+**Halo: Batch Query Processing and Optimization for Agentic Workflows** starts from a database perspective. Its key move is to compile multiple agentic workflows into structured query-plan DAGs, then optimize them as a batch.
 
-> The core of agentic system optimization is not making a single LLM inference faster. It is making agentic execution understandable, predictable, and schedulable as a system workload.
+The intuition is natural: if several workflows share prompts, contexts, tools, or subgraphs, the system should not treat them as unrelated API calls. Once a workflow is represented as a DAG, a processor can reason about common subgraphs, shared computation, CPU/GPU pipelining, cache reuse, and placement.
 
-## 2. Paper 1: Halo
+Halo is valuable because it makes an explicit analogy between agentic execution and query processing. It says that orchestration is not enough. If an agent framework only launches steps while the serving system only sees isolated LLM calls, then no layer has a global view of the plan.
 
-### 2.1 Basic Information
+What this paper suggests to me:
 
-Title: **Batch Query Processing and Optimization for Agentic Workflows**
+- Agentic workflows need a plan-level optimization layer, not just a faster model server.
+- The useful optimization unit may be a batch of structurally related workflows.
+- CPU tool operators and GPU LLM operators should be scheduled together, because pipeline bubbles and resource imbalance happen across that boundary.
 
-Authors: Junyi Shen, Noppanat Wadlom, Yao Lu
+The limitation is also clear. Halo works best when workflows have visible and relatively fixed DAGs. Many real agentic systems, especially coding agents and open-ended research agents, do not behave like clean static plans. They replan, retry, pause for tools, and branch based on uncertain intermediate results. So Halo gives a strong abstraction, but it also reveals the cost of assuming too much structure.
 
-Affiliation: National University of Singapore, Singapore
+## 3. Helium: LLM Calls as First-Class Operators
 
-Version: arXiv:2509.02121v2, January 19, 2026
+**Helium: Efficient LLM Serving for Agentic Workflows: A Data Systems Perspective** extends the same database-oriented line of thought. Its most useful framing is "LLM-as-operator": LLM invocations should not be hidden inside opaque UDFs. They should be visible to the optimizer.
 
-### 2.2 Topic
+This matters because many LLM-specific optimizations depend on visibility. KV cache, prompt cache, and operator output cache cannot be planned well if the system only sees black-box function calls. Helium uses a DSL/DAG to express batched workflows, then lets the optimizer perform pruning, common subgraph elimination, and cache-aware replacement such as `CacheFetch`.
 
-Topic: **Batch query processing for agentic workflows**
+I like this paper because it turns caching from a runtime trick into an optimization object. Passive prefix caching relies on accidental similarity. A workflow-aware optimizer can reason about repeated prompt templates, shared prefixes, and reused operator outputs before execution.
 
-- Multiple agentic workflows can be viewed as a batch of structurally similar queries.
-- A workflow DAG exposes opportunities for shared computation, shared prompts/context, and shared CPU/GPU execution.
-- Agentic workflows need plan-level optimization, similar to batch query processing in databases.
+What this paper suggests to me:
 
-### 2.3 Insights
+- "LLM-as-operator" is a useful systems abstraction for agentic execution.
+- Cache planning should move upward from local runtime policy to workflow-level optimization.
+- Prompt, KV, and operator-output caches may need to be managed together rather than as separate mechanisms.
 
-- Existing LLM serving engines optimize only individual calls and ignore the workflow DAG.
-- Existing agent frameworks handle orchestration, but not system-level performance planning.
-- CPU tool operators and GPU LLM operators execute together, creating pipeline bubbles and low resource utilization.
+But Helium shares Halo's main assumption: the system needs a visible workflow graph and direct access to the serving stack. That may fit controlled platforms, but it is harder in enterprise settings where requests come from mixed frameworks, tools run outside the model server, and APIs hide the full workflow. Recent agent products also seem less dependent on repeated multi-agent debate templates and more dependent on dynamic, tool-heavy execution.
 
-### 2.4 Core Idea
+## 4. Pythia: Workflow as Predictable Serving Trace
 
-- Compile each workflow into a structured query-plan DAG.
-- Build a consolidated graph for batch queries to expose shared computation.
-- Use a cost model that jointly considers heterogeneous resources, prefill/decode cost, cache reuse, and GPU placement.
-- Let the processor handle adaptive batching, KV-cache sharing/migration, and CPU-GPU pipelining.
+**Pythia: Exploiting Workflow Predictability for Efficient Agent-Native LLM Serving** feels like a shift from idealized workflow graphs to production serving traces. Instead of assuming that the serving system can fully inspect every workflow DAG, Pythia asks whether lightweight metadata and historical traces are enough to optimize a mixed request stream.
 
-### 2.5 Evaluation
-
-Strengths:
-
-- It directly transfers ideas from database query optimization to agentic workflows.
-- It considers both CPU tools and GPU LLMs, giving the system design a relatively complete view.
-
-Limitations:
-
-- The optimized tasks are all fixed-DAG workflows. Real agentic systems usually do not have such idealized reasoning structures, especially for open-ended tasks such as programming.
-- Halo's experimental environment is relatively white-box and assumes a single machine with multiple GPUs. This does not fully match many current agent products, where APIs and serving run in the cloud while tools execute locally.
-
-## 3. Paper 2: Helium
-
-### 3.1 Basic Information
-
-Title: **Efficient LLM Serving for Agentic Workflows: A Data Systems Perspective (Extended)**
-
-Authors: Noppanat Wadlom, Junyi Shen, Yao Lu
-
-Affiliation: National University of Singapore, Singapore
-
-Version: arXiv:2603.16104v1, March 17, 2026
-
-### 3.2 Topic
-
-Topic: **Workflow-aware LLM serving with proactive caching and cache-aware scheduling**
-
-- Agentic workflows should be modeled as query plans.
-- LLM invocations should be first-class operators, not black boxes wrapped inside UDFs.
-- KV cache, prompt cache, and operator output cache should all be visible to the optimizer.
-
-### 3.3 Problems
-
-- Traditional data systems wrap LLM calls as UDFs, which prevents the system from using LLM-specific optimizations.
-- Traditional LLM serving sees only a single call and cannot exploit inter-operator or inter-workflow sharing.
-- Passive prefix caching relies on luck and cannot use the structure of batched workflows.
-
-### 3.4 Core Idea
-
-- Use a DSL/DAG to express batched agentic workflows.
-- Let the query optimizer perform pruning, common subgraph elimination, and replacement with `CacheFetch`.
-- Use a templated radix tree to capture prompt prefix structure.
-- Proactively warm static prompt prefixes and use prompt cache to skip repeated operators.
-
-### 3.5 Evaluation
-
-Strengths:
-
-- The paper explains "LLM-as-operator" very clearly, which is useful for building a theoretical framework.
-- It elevates caching from a runtime trick into an object of query optimization.
-
-Limitations:
-
-- It has the same issue as Halo: the method strongly depends on fixed-DAG workflows and requires direct access to the GPU server.
-- In real enterprise settings with mixed request streams on shared clusters, this caching strategy may be hard to use effectively because the system cannot observe the complete workflow graph.
-- Recent agentic system designs rarely rely on the kind of multi-agent debate pattern with shared prefixes/prompts assumed by these two papers. Mature use cases are often more open-ended and include interruptions and retries, which differ substantially from the fixed-DAG assumption.
-
-## 4. Paper 3: Pythia
-
-### 4.1 Basic Information
-
-Title: **Pythia: Exploiting Workflow Predictability for Efficient Agent-Native LLM Serving**
-
-Authors: Shan Yu, Junyi Shu, Yuanjiang Ni, Kun Qian, Xue Li, Yang Wang, Jinyuan Zhang, Ziyi Xu, Shuo Yang, Lingjun Zhu, Ennan Zhai, Qingda Lu, Jiarong Xing, Youyou Lu, Xin Jin, Xuanzhe Liu, Harry Xu
-
-Affiliations: UCLA, Alibaba Cloud Computing, Alibaba Group, Intel, SJTU, UC Berkeley, Rice University, Tsinghua University, Peking University
-
-Version: arXiv:2604.25899v2, May 14, 2026
-
-### 4.2 Topic
-
-Topic: **Predictability-driven agent-native LLM serving**
-
-This paper is not primarily about static DAG optimization for each workflow. Instead, in a mixed request stream, each request is one LLM call from some workflow. The serving layer receives only lightweight metadata, learns workflow statistics from historical traces, and uses those patterns to optimize caching, routing, priority, and autoscaling.
-
-Example workflow:
-
-```text
-A -> B -> C -> D
-id: 123
-A: planner
-```
-
-### 4.3 Problems
-
-Pythia's production traces reveal three problems:
-
-- Low prefix cache hit rate: different agent prompts vary significantly, and tool gaps cause cache entries to be evicted from GPU L1/L2 caches in the serving cluster.
-- Severe resource contention: long-context requests are mixed together, causing load imbalance, preemption, and recomputation. For example, a batch may contain both long-context requests and lightweight requests, and the long-context requests can occupy the cluster's KV cache. Inside the same workflow, Planner, Engineer, Reviewer, and Verifier also have different resource footprints. If the system does not know the agent role, early long-output requests may occupy resources and block near-complete Verifier/Reviewer requests.
-- Structured bursts are obvious: the workflow graph propagates bursts from upstream agents to downstream agents.
-
-### 4.4 Core Design
-
-**0. Add predictive information**
-
-Originally, each LLM API request contains only information such as prompt and model. Pythia requires the agent framework to attach three lightweight fields:
+In Pythia, each LLM request carries fields such as:
 
 ```json
 {
@@ -184,331 +80,98 @@ Originally, each LLM API request contains only information such as prompt and mo
 }
 ```
 
-The Workflow Profiler in the gateway looks up the statistical profile for this agent role from historical traces, then injects:
+The gateway uses historical profiles to attach predicted properties:
 
 ```json
 {
   "predicted_output_len": [1000, 1300],
-  "predicted_path_regex": "planner -> explorer{3,4} -> engineer{3,6} -> reviewer -> verifier",
-  "prompt_composition": {}
+  "predicted_path_regex": "planner -> explorer{3,4} -> engineer{3,6} -> reviewer -> verifier"
 }
 ```
 
-All later policies depend on these predicted fields.
+This small amount of metadata changes the serving problem. A router no longer has to balance only by request count. It can route by predicted token/KV pressure. A scheduler no longer has to use FCFS. It can prioritize requests that are close to completing a workflow or likely to unblock an idle downstream model. An autoscaler no longer has to react after a queue has already exploded. It can look ahead along predicted workflow phases.
 
-**1. Resource-aware routing: balance by token/KV upper bounds instead of request count**
+The paper's production traces highlight three important workload properties:
 
-A normal router might do this:
+- Prefix reuse is fragile because agent prompts vary and tool gaps can evict useful cache entries.
+- Resource footprints differ sharply across roles such as planner, engineer, reviewer, and verifier.
+- Bursts propagate through the workflow graph, so upstream phases can create downstream queue spikes.
 
-```text
-Send the request to the replica with the shortest queue.
-```
-
-The problem is that two queues with the same number of requests may impose very different resource pressure:
-
-```text
-GPU0: 2 Engineers, each expected to generate 3000 tokens
-GPU1: 2 Planners, each expected to generate 60 tokens
-```
-
-Pythia changes this to statistical capacity routing. For each request, the profiler provides a high-confidence upper bound for output length:
-
-```text
-u_i = 99th percentile predicted output length
-```
-
-For each candidate GPU replica, Pythia checks whether adding the new request would keep the sum of active requests' token upper bounds within KV capacity:
-
-```text
-sum(u_i) <= C
-```
-
-If the condition holds, the replica is considered statistically safe. More formally, Pythia uses a union bound to control the probability of OOM:
-
-```text
-P_oom <= sum(alpha_i)
-```
-
-That is, if each request exceeds its own upper bound with probability `alpha_i`, the probability that all requests together exceed memory is controlled under a threshold `epsilon`.
-
-Among all safe replicas, Pythia chooses the one with the largest expected headroom:
-
-```text
-headroom = capacity - expected_active_size
-```
-
-If several replicas are similar, cache affinity is used as a tie-breaker. For example, a worker that already has related L2 cache entries for the same workflow is preferred.
-
-The result is that long-output or long-context requests are not blindly stacked onto the same GPU, reducing OOM, preemption, and head-of-line blocking.
-
-**2. Graph-driven priority: prioritize by workflow position and downstream idle risk, not FCFS**
-
-A normal local scheduler often uses FCFS:
-
-```text
-Run whichever request arrives first.
-```
-
-Pythia computes a `base_priority` for each request:
-
-```text
-base_priority =
-  w1 * completion_score
-+ w2 * unblock_score
-```
-
-The first term is **completion_score**:
-
-```text
-completion_score = 1 / E[remaining_distance]
-```
-
-The idea is that requests closer to the end of a workflow get higher priority. For example:
-
-```text
-planner -> engineer -> reviewer -> verifier
-```
-
-If `verifier` is close to completing the whole workflow, it should run before a newly started `planner`, because finishing it can release the entire job and reduce job completion time.
-
-The second term is **unblock_score**, which asks whether this request will unlock an idle downstream model.
-
-Pythia scans the future path:
-
-```text
-future_agents = GetFutureAgents(predicted_path_regex)
-```
-
-If a future agent's model replica currently has a short queue and is about to become idle, then the upstream request that will soon produce its input receives a priority boost. The closer that downstream agent is, the larger the boost:
-
-```text
-unblock_score += 1 / expected_distance_to_that_agent
-```
-
-For example:
-
-```text
-engineer -> reviewer
-```
-
-If the reviewer model is nearly idle and engineer completion will trigger reviewer immediately, the engineer request receives higher priority. This prevents downstream GPUs from waiting idly.
-
-**3. Local scheduler: reorder at every iteration and add aging to prevent starvation**
-
-After a request reaches a worker, it does not run forever in a fixed order. At the start of each scheduling window or iteration, Pythia recomputes dynamic priority:
-
-```text
-dynamic_priority = base_priority + aging(wait_time)
-```
-
-Then it selects the highest-priority batch that fits in memory.
-
-Aging is important. If the scheduler only favors near-completion requests, early-stage planners or explorers may starve. Aging gradually increases priority with wait time.
-
-This creates a tradeoff:
-
-```text
-Finish workflows that are near completion as soon as possible.
-Avoid permanently queueing early-stage requests.
-```
-
-**4. Priority-aware preemption: when memory is tight, evict low-priority requests**
-
-In LLM serving, if some requests generate more tokens than predicted, KV memory may suddenly become tight. Traditional systems may preempt requests by FCFS or another simple rule and return the preempted request to the back of the queue.
-
-Pythia instead does this:
-
-```text
-When worker memory pressure is high:
-  Find the active request with the lowest dynamic_priority.
-  Pause or evict it.
-  Put it back into the local queue.
-```
-
-The evicted request is usually:
-
-```text
-an early-stage request,
-far from completion,
-not unlocking downstream work,
-currently low priority.
-```
-
-It is usually not:
-
-```text
-a near-complete verifier,
-an engineer that unlocks an idle reviewer,
-or another request on the workflow critical path.
-```
-
-This reduces waste at the workflow level. Even if local preemption happens, Pythia tries not to interrupt the critical path.
-
-**5. Phase-adaptive autoscaling: scale model replicas ahead of workflow phases**
-
-This part handles bursts and inter-model resource contention.
-
-Pythia projects all active requests' `predicted_path_regex` over a lookahead horizon:
-
-```text
-imminent_agents = ProjectGraph(regex, H)
-```
-
-It then estimates the near-future load for each model:
-
-```text
-D[agent.model] += EstimatedLoad(agent)
-```
-
-Next, it estimates the required number of replicas:
-
-```text
-R'[model] = EstimateReplicas(D[model])
-```
-
-If demand for a model is expected to rise, Pythia scales it up ahead of time:
-
-```text
-planner -> explorer{10}
-```
-
-When the system sees 50 planners running, it knows that 500 explorer requests may arrive soon, so it can load explorer model replicas in advance.
-
-If a model will not be needed within the lookahead horizon, Pythia scales it down:
-
-```text
-The planner phase has passed, and no future request will call the planner model.
-```
-
-Pythia first tells the scheduler to stop assigning new requests to those replicas, allowing them to drain quickly. Once their queues are empty, resources are released instead of waiting for a fixed keep-alive timeout.
-
-This avoids the lag of reactive autoscaling and prevents cold starts and incorrect cache eviction.
-
-**Putting the pieces together**
-
-Assume 30 coding assistant workflows run concurrently:
+A simple coding-agent example makes the point:
 
 ```text
 planner -> explorer -> engineer -> reviewer -> verifier
 ```
 
-Traditional serving:
+Traditional serving may stack several long engineer requests on one GPU, delay short verifier requests, and start scaling only after the burst has moved to another phase. Pythia instead uses predicted output length, workflow position, downstream idle risk, and phase lookahead to route, prioritize, preempt, and scale more deliberately.
 
-```text
-1. Planner/explorer fan-out suddenly bursts and queues explode.
-2. The router balances by request count and stacks several long engineer requests on one GPU.
-3. Reviewer/verifier requests wait for a long time, even though they are short.
-4. A GPU's KV memory overflows, causing random preemption and recomputation.
-5. The autoscaler starts scaling when the engineer queue is already overloaded, but by then the burst has moved to reviewer.
-```
+What this paper suggests to me:
 
-Pythia:
+- Even partial workflow metadata can be extremely valuable.
+- Workload predictability does not require a perfect static DAG; statistical profiles may be enough.
+- The serving layer should distinguish agent roles, not just models and prompts.
 
-```text
-1. It predicts explorer fan-out after planner through the regex and scales explorer replicas early.
-2. Engineer requests are routed to GPUs with enough KV headroom using predicted_output_len.
-3. Reviewer/verifier requests get higher priority because they are close to the workflow end.
-4. If reviewer GPUs are about to become idle, engineer requests that unlock reviewers are accelerated.
-5. When memory overflows, Pythia pauses low-priority early-stage requests instead of interrupting the critical path.
-6. After a phase ends, it quickly scales down models that are no longer needed.
-```
+This is the closest of the four papers to a real workload perspective. Its limitation is that it depends on platform observability and metadata interfaces. If third-party agents do not expose workflow IDs, agent roles, or path hints, the serving layer has to infer structure from much weaker signals. The paper also leaves open how stable these profiles remain under high request variety.
 
-### 4.5 Evaluation
+## 5. Scepsy: Workflow as Aggregate Cluster Demand
 
-Strengths:
+**Scepsy: Serving Agentic Workflows Using Aggregate LLM Pipelines** looks at the problem from the cluster allocation side. Agentic workflows may call multiple LLMs, and the number of models can exceed the number of available GPUs. Exact execution is hard to predict because workflows branch, loop, and generate variable-length outputs. But Scepsy observes that each LLM's aggregate share of total execution time can still be stable enough for resource allocation.
 
-- It is closest to a real workload perspective and includes production traces.
-- It is a solid systems paper that shows effective optimization strategies once a workload profile is available.
+Its core idea is to collect low-level LLM invocation traces, build an Aggregate LLM Pipeline, and search over allocation choices such as replica count, tensor parallel degree, fractional GPU share, and topology-aware placement.
 
-Limitations:
+Compared with Pythia, Scepsy is less about online scheduling for each request and more about offline or periodic cluster configuration. It asks: given an agentic workload with multiple models, how should limited GPU resources be divided?
 
-- It depends on platform observability and metadata interfaces, which may be difficult for open third-party agents.
-- Its workload analysis and experiments are still limited. In real scenarios, high request variety may affect prediction quality.
+What this paper suggests to me:
 
-## 5. Paper 4: Scepsy
+- Not all useful workload structure has to be graph-level structure.
+- Aggregate per-model demand can be enough for cluster-level optimization.
+- For arbitrary agent frameworks, low-level invocation traces may be easier to collect than complete workflow DAGs.
 
-### 5.1 Basic Information
+The main caveat is that Scepsy assumes tool and orchestration time is small. That may not hold for tool-heavy agents, browser agents, data analysts, or coding agents that spend substantial time outside the LLM server.
 
-Title: **Scepsy: Serving Agentic Workflows Using Aggregate LLM Pipelines**
+## 6. The Shared Direction
 
-Authors: Marcel Wagenländer, Otto White, Britannio Jarrett, Guo Li, Yanda Tao, Huanzhou Zhu, Llúis Vilanova, Pedro Silvestre, Peter Pietzuch
-
-Affiliations: Imperial College London; Independent Researcher
-
-Version: arXiv:2604.15186v1, April 16, 2026
-
-### 5.2 Topic
-
-Topic: **GPU allocation for arbitrary multi-LLM agentic workflows**
-
-- Agentic workflows may contain multiple LLMs, and the number of LLMs often exceeds the number of available GPUs.
-- End-to-end latency is affected by branching, fan-out, loops, and token generation, making it difficult to predict precisely.
-- However, each LLM's aggregate share of total execution time is relatively stable and can be used for resource allocation.
-
-### 5.3 Problems
-
-- Arbitrary agentic programs: different frameworks such as LangChain, AutoGen, and Camel.
-- Unpredictable execution: workflows can include data-dependent branching, fan-out, and recursion.
-- Conflicting objectives: throughput and latency create tradeoffs.
-- GPU oversubscription: multiple LLMs share limited GPUs, and manual allocation is often inefficient.
-
-### 5.4 Core Idea
-
-- Collect aggregate per-LLM statistics from low-level LLM invocation traces.
-- Build an Aggregate LLM Pipeline to predict latency and throughput under different allocations.
-- Search over GPU allocation choices: replica count, tensor parallel degree, and fractional GPU share.
-- Use topology-aware placement to reduce fragmentation while respecting NVLink/network topology.
-
-### 5.5 Evaluation
-
-Scepsy is conceptually similar to Pythia: both use statistical features from request streams for resource scheduling. But Scepsy is more focused on offline configuration and scheduling, similar to knob tuning.
-
-Strengths:
-
-- It covers multi-LLM and GPU cluster allocation, which Halo and Helium emphasize less.
-- It does not strongly depend on a single agent framework, so its engineering adaptation surface is broader.
-
-Limitations:
-
-- It assumes that tool and orchestration time is small, which may not hold for tool-heavy agent workloads.
-
-## 6. Relationship Among the Four Papers
+These four papers operate at different layers, but I read them as parts of the same transition:
 
 | Layer | Paper | Optimization target |
 | --- | --- | --- |
-| Query plan / batch workflow | Halo | consolidated workflow DAG, CPU-GPU scheduling |
+| Query plan / batch workflow | Halo | Consolidated workflow DAG, CPU-GPU scheduling |
 | Query optimizer / cache | Helium | LLM-as-operator, proactive KV/prompt cache |
-| Serving runtime / production trace | Pythia | workflow predictability, lookahead scheduling, autoscaling |
-| Cluster allocation | Scepsy | multi-LLM GPU allocation, fractional GPU placement |
+| Serving runtime / production trace | Pythia | Workflow predictability, lookahead scheduling, autoscaling |
+| Cluster allocation | Scepsy | Multi-LLM GPU allocation, fractional GPU placement |
 
-- Halo/Helium start from system abstractions and assume that the workflow DAG is visible.
-- Pythia starts from production traces and shows that agentic traffic has structure and bursts.
-- Scepsy starts from GPU clusters and describes workload through aggregate LLM demand.
+Halo and Helium start from system abstraction: if the workflow graph is visible, optimize it like a query plan. Pythia starts from production traces: if workflows are statistically predictable, use that predictability in the serving runtime. Scepsy starts from GPU clusters: if exact execution is dynamic, optimize around aggregate model demand.
 
-## 7. Macro Workload Critique
+The common claim is stronger than any one paper: the serving system should no longer treat agentic requests as independent model calls.
 
-Current limitations in these papers:
+## 7. The Missing Layer: Macro Workload Characterization
 
-- Workload analysis is often motivation rather than an independent contribution.
-- Benchmarks and workflow patterns are synthetic or only locally realistic, lacking cross-application, cross-industry, and cross-platform statistics.
-- There is no macro-level analysis comparable to production workload studies in the database community.
+The more I read these papers, the more I feel that the missing piece is not another isolated scheduler. It is a systematic workload study for agentic systems.
 
-Possible reasons:
+Current papers often use workload analysis as motivation rather than as the main contribution. Their benchmarks and workflow patterns are either synthetic, platform-specific, or locally realistic. We still lack something comparable to classic production workload studies in databases and cloud systems: cross-application, cross-industry, cross-platform measurements that tell us what agentic workloads actually look like.
 
-- Real agent traces are highly sensitive: user input, enterprise documents, code, tool calls, and API responses may all involve privacy concerns.
-- Agentic applications are still evolving quickly. Coding agents, deep research, data analysts, browser agents, and customer support agents can have very different workloads.
-- For evaluability, systems papers tend to prefer fixed DAGs, fixed patterns, and controlled benchmarks.
+Some reasons are understandable:
 
-Open questions:
+- Real agent traces are sensitive. User inputs, enterprise documents, code, tool calls, API responses, and intermediate reasoning may all involve privacy concerns.
+- Agentic applications are evolving quickly. Coding agents, deep research agents, data analysts, browser agents, and customer support agents may have very different workload shapes.
+- Systems papers need controlled evaluation, so fixed DAGs and synthetic patterns are easier to benchmark.
 
-- What is the graph shape distribution of mainstream agentic workloads?
-- What is the ratio among LLM, tool, and operator execution?
-- How much real prefix/KV/tool-result reuse opportunity exists?
-- How much do tool latency, network latency, and human-in-the-loop latency contribute to end-to-end time?
-- How much do dynamic replanning, failure/retry, and self-correction affect system scheduling?
+But without macro characterization, many optimization assumptions remain uncertain. For example:
 
-## 8. Closing Thoughts
+- What is the graph-shape distribution of mainstream agentic workloads?
+- How much time is spent in LLM inference, tools, orchestration, network calls, and human waiting?
+- How much real prefix/KV/tool-result reuse exists across users or sessions?
+- How often do workflows replan, retry, fail, branch, or self-correct?
+- Which agent roles dominate latency, cost, KV pressure, and queueing delay?
 
-As agentic systems mature, I see their serving infrastructure evolving along a trajectory similar to the commercialization of database systems. vLLM's recent Pageflow framework, for instance, decouples the KV cache layer from compute and organizes it into a three-tier storage hierarchy — echoing Snowflake's separation of storage and compute.
+These questions matter because they decide which optimizations are worth building. If workflows are mostly fixed and repeated, Halo/Helium-style plan optimization becomes very attractive. If workflows are dynamic but statistically predictable, Pythia-style metadata and profiling become more important. If exact graph structure is unavailable but model-level demand is stable, Scepsy-style aggregate allocation may be the practical path.
 
-Meanwhile, enterprise demand for agentic systems that can tackle large-scale software engineering projects is driving a rapid divergence between enterprise and consumer request patterns. These enterprise workloads impose steep and growing demands on context length and KV cache capacity. I expect this trend will push agentic infrastructure companies toward OLAP-style pricing models and resource management strategies.
+## 8. My Current Hypothesis
+
+My current hypothesis is that agentic infrastructure will evolve in a direction similar to database systems: from local execution tricks toward workload-aware resource management.
+
+In databases, the important abstraction was not just a faster operator. It was the query plan, the optimizer, the workload, and eventually the separation of storage, compute, and pricing models around different workload classes. Agentic systems may follow a similar path. The infrastructure will need to understand plans when they are visible, infer profiles when they are not, and allocate resources based on workload phases rather than isolated calls.
+
+This also suggests a business-side shift. Enterprise agentic workloads, especially large-scale software engineering tasks, look increasingly different from consumer chat traffic. They demand longer context, larger KV capacity, more tool execution, more retries, and stronger guarantees around latency and completion. I expect this divergence to push agentic infrastructure companies toward OLAP-like pricing and resource-management models, where users pay not only for tokens but for long-running, stateful, workflow-level compute.
+
+So my takeaway from these papers is not simply that agentic serving needs better batching or caching. It is that the field needs to define the workload itself. Once we know what agentic workloads really look like, the right optimizers, schedulers, cache hierarchies, and pricing models become much easier to reason about.

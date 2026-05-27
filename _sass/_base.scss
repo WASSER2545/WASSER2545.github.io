@@ -519,6 +519,31 @@ footer.sticky-bottom {
     mjx-container[jax="CHTML"][display="true"] {
       display: unset;
     }
+
+    .post-preview-link {
+      border-radius: 0.75rem;
+      display: block;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .post-preview-thumb {
+      border: 1px solid var(--global-divider-color);
+      border-radius: 0.75rem;
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.post-preview-image {
+  margin: 1.5rem 0 2rem;
+
+  img {
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.9rem;
+    display: block;
+    width: 100%;
   }
 }
 
