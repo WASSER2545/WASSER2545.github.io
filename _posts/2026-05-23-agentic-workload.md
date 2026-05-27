@@ -36,7 +36,7 @@ This is why I think the core of agentic system optimization is not simply making
 
 ## 2. Halo: Workflow as Query Plan
 
-**Halo: Batch Query Processing and Optimization for Agentic Workflows** starts from a database perspective. Its key move is to compile multiple agentic workflows into structured query-plan DAGs, then optimize them as a batch.
+**Halo: [Batch Query Processing and Optimization for Agentic Workflows](https://arxiv.org/abs/2509.02121)** starts from a database perspective. Its key move is to compile multiple agentic workflows into structured query-plan DAGs, then optimize them as a batch.
 
 The intuition is natural: if several workflows share prompts, contexts, tools, or subgraphs, the system should not treat them as unrelated API calls. Once a workflow is represented as a DAG, a processor can reason about common subgraphs, shared computation, CPU/GPU pipelining, cache reuse, and placement.
 
@@ -52,7 +52,7 @@ The limitation is also clear. Halo works best when workflows have visible and re
 
 ## 3. Helium: LLM Calls as First-Class Operators
 
-**Helium: Efficient LLM Serving for Agentic Workflows: A Data Systems Perspective** extends the same database-oriented line of thought. Its most useful framing is "LLM-as-operator": LLM invocations should not be hidden inside opaque UDFs. They should be visible to the optimizer.
+**Helium: [Efficient LLM Serving for Agentic Workflows: A Data Systems Perspective](https://arxiv.org/abs/2603.16104)** extends the same database-oriented line of thought. Its most useful framing is "LLM-as-operator": LLM invocations should not be hidden inside opaque UDFs. They should be visible to the optimizer.
 
 This matters because many LLM-specific optimizations depend on visibility. KV cache, prompt cache, and operator output cache cannot be planned well if the system only sees black-box function calls. Helium uses a DSL/DAG to express batched workflows, then lets the optimizer perform pruning, common subgraph elimination, and cache-aware replacement such as `CacheFetch`.
 
@@ -68,7 +68,7 @@ But Helium shares Halo's main assumption: the system needs a visible workflow gr
 
 ## 4. Pythia: Workflow as Predictable Serving Trace
 
-**Pythia: Exploiting Workflow Predictability for Efficient Agent-Native LLM Serving** feels like a shift from idealized workflow graphs to production serving traces. Instead of assuming that the serving system can fully inspect every workflow DAG, Pythia asks whether lightweight metadata and historical traces are enough to optimize a mixed request stream.
+**Pythia: [Exploiting Workflow Predictability for Efficient Agent-Native LLM Serving](https://arxiv.org/abs/2604.25899)** feels like a shift from idealized workflow graphs to production serving traces. Instead of assuming that the serving system can fully inspect every workflow DAG, Pythia asks whether lightweight metadata and historical traces are enough to optimize a mixed request stream.
 
 In Pythia, each LLM request carries fields such as:
 
@@ -115,7 +115,7 @@ This is the closest of the four papers to a real workload perspective. Its limit
 
 ## 5. Scepsy: Workflow as Aggregate Cluster Demand
 
-**Scepsy: Serving Agentic Workflows Using Aggregate LLM Pipelines** looks at the problem from the cluster allocation side. Agentic workflows may call multiple LLMs, and the number of models can exceed the number of available GPUs. Exact execution is hard to predict because workflows branch, loop, and generate variable-length outputs. But Scepsy observes that each LLM's aggregate share of total execution time can still be stable enough for resource allocation.
+**Scepsy: [Serving Agentic Workflows Using Aggregate LLM Pipelines](https://arxiv.org/abs/2604.15186)** looks at the problem from the cluster allocation side. Agentic workflows may call multiple LLMs, and the number of models can exceed the number of available GPUs. Exact execution is hard to predict because workflows branch, loop, and generate variable-length outputs. But Scepsy observes that each LLM's aggregate share of total execution time can still be stable enough for resource allocation.
 
 Its core idea is to collect low-level LLM invocation traces, build an Aggregate LLM Pipeline, and search over allocation choices such as replica count, tensor parallel degree, fractional GPU share, and topology-aware placement.
 
