@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">A database perspective on agentic system serving</title>
+  <desc id="desc">A conceptual blog preview image showing database query optimization ideas being used to analyze agentic system serving workloads.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfd"/>
+      <stop offset="0.52" stop-color="#eef7f3"/>
+      <stop offset="1" stop-color="#fbf4ec"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f9fcfd"/>
+    </linearGradient>
+    <linearGradient id="db" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#174a72"/>
+      <stop offset="1" stop-color="#2a7c87"/>
+    </linearGradient>
+    <linearGradient id="agent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7b5aa6"/>
+      <stop offset="1" stop-color="#d77b5f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#163247" flood-opacity="0.13"/>
+    </filter>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6d8190"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="260" cy="150" r="210" fill="#cfe7f2" opacity="0.42" filter="url(#soft)"/>
+  <circle cx="1370" cy="740" r="230" fill="#f0cbb2" opacity="0.38" filter="url(#soft)"/>
+
+  <g opacity="0.24" stroke="#b5c6cf" stroke-width="1">
+    <path d="M120 140H1480"/>
+    <path d="M120 300H1480"/>
+    <path d="M120 460H1480"/>
+    <path d="M120 620H1480"/>
+    <path d="M120 780H1480"/>
+    <path d="M240 84V812"/>
+    <path d="M440 84V812"/>
+    <path d="M640 84V812"/>
+    <path d="M840 84V812"/>
+    <path d="M1040 84V812"/>
+    <path d="M1240 84V812"/>
+    <path d="M1440 84V812"/>
+  </g>
+
+  <rect x="94" y="82" width="1412" height="736" rx="34" fill="url(#paper)" filter="url(#shadow)"/>
+
+  <g transform="translate(140 128)">
+    <text x="0" y="0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="31" font-weight="800" fill="#14324a">A DBer&apos;s Lens on Agentic Serving</text>
+    <text x="0" y="42" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#637a8c">Reading agentic workflows as query plans, cost models, and production workloads</text>
+  </g>
+
+  <g transform="translate(134 230)">
+    <rect x="0" y="0" width="566" height="452" rx="28" fill="#ffffff" stroke="#dce8ee"/>
+    <text x="34" y="46" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="800" fill="#14324a">Database Systems Mindset</text>
+    <text x="34" y="76" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#697f8e">optimizer, plan, cache, scheduler</text>
+
+    <g transform="translate(54 120)">
+      <rect x="0" y="18" width="170" height="54" rx="27" fill="#e8f2f8" stroke="#b9d6e5"/>
+      <text x="85" y="52" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" fill="#1b5a80">SQL Query</text>
+
+      <rect x="278" y="0" width="178" height="90" rx="18" fill="#f6fafc" stroke="#d7e6ed"/>
+      <text x="367" y="34" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" fill="#14324a">Query Plan</text>
+      <text x="367" y="58" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#6f8390">operators + DAG</text>
+
+      <path d="M174 45H270" stroke="#6d8190" stroke-width="3" marker-end="url(#arrow)"/>
+    </g>
+
+    <g transform="translate(56 242)">
+      <rect x="0" y="0" width="130" height="56" rx="16" fill="#eef7f3" stroke="#bddccd"/>
+      <text x="65" y="34" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" fill="#246b54">Cost Model</text>
+
+      <rect x="162" y="0" width="130" height="56" rx="16" fill="#fff5ea" stroke="#ead0ad"/>
+      <text x="227" y="34" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" fill="#9a6126">Reuse</text>
+
+      <rect x="324" y="0" width="130" height="56" rx="16" fill="#f2eef8" stroke="#d4c3e8"/>
+      <text x="389" y="34" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" fill="#6d4a8a">Scheduling</text>
+    </g>
+
+    <g transform="translate(62 336)">
+      <path d="M0 44 C88 0 166 0 238 42 C314 84 396 84 474 38" fill="none" stroke="url(#db)" stroke-width="8" stroke-linecap="round"/>
+      <text x="0" y="104" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#5e7483">The DB instinct: expose structure before optimizing execution.</text>
+    </g>
+  </g>
+
+  <g transform="translate(740 248)">
+    <rect x="0" y="0" width="120" height="404" rx="60" fill="#f5f9fb" stroke="#dce8ee"/>
+    <path d="M60 78V326" stroke="#7f94a2" stroke-width="3" stroke-dasharray="9 10" marker-end="url(#arrow)"/>
+    <text x="60" y="176" text-anchor="middle" transform="rotate(-90 60 176)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" fill="#526978">translation</text>
+    <text x="60" y="218" text-anchor="middle" transform="rotate(-90 60 218)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#78909e">DB ideas → serving</text>
+  </g>
+
+  <g transform="translate(900 230)">
+    <rect x="0" y="0" width="566" height="452" rx="28" fill="#101e2b"/>
+    <text x="34" y="46" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="800" fill="#f2fbff">Agentic System Serving</text>
+    <text x="34" y="76" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#9fb7c5">LLM calls, tools, KV cache, GPUs, bursts</text>
+
+    <g transform="translate(42 124)">
+      <path d="M62 134 C142 78 210 76 286 118 C352 154 404 142 468 78" fill="none" stroke="#8395a4" stroke-width="4" marker-end="url(#arrow)"/>
+      <path d="M62 134 C150 184 226 196 306 162 C380 132 420 154 468 212" fill="none" stroke="#8395a4" stroke-width="4" marker-end="url(#arrow)"/>
+
+      <rect x="0" y="100" width="124" height="68" rx="18" fill="#18344c" stroke="#315b78"/>
+      <text x="62" y="128" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" fill="#dff5ff">Planner</text>
+      <text x="62" y="150" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#9fb7c5">request</text>
+
+      <rect x="226" y="72" width="126" height="68" rx="18" fill="#213f36" stroke="#3d725e"/>
+      <text x="289" y="100" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" fill="#dff5ef">Tool</text>
+      <text x="289" y="122" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#a6c4b6">API / SQL</text>
+
+      <rect x="226" y="150" width="126" height="68" rx="18" fill="#49354f" stroke="#775d86"/>
+      <text x="289" y="178" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" fill="#f3e9ff">LLM</text>
+      <text x="289" y="200" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#cdb9dd">tokens</text>
+
+      <rect x="426" y="44" width="108" height="68" rx="18" fill="url(#agent)"/>
+      <text x="480" y="72" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" fill="#ffffff">Serve</text>
+      <text x="480" y="94" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#fff4ee">GPU</text>
+
+      <rect x="426" y="188" width="108" height="68" rx="18" fill="#223a55" stroke="#3f668c"/>
+      <text x="480" y="216" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" fill="#e0f2ff">Cache</text>
+      <text x="480" y="238" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#adc7d8">KV</text>
+    </g>
+
+    <g transform="translate(42 336)">
+      <rect x="0" y="0" width="482" height="72" rx="18" fill="#172b3c" stroke="#315b78"/>
+      <text x="24" y="30" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#c9e4ef">Question</text>
+      <text x="24" y="54" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" fill="#ffffff">What is the agentic workload really optimizing?</text>
+    </g>
+  </g>
+
+  <g transform="translate(140 736)">
+    <rect x="0" y="0" width="1320" height="52" rx="26" fill="#eef5f6"/>
+    <circle cx="30" cy="26" r="8" fill="url(#db)"/>
+    <text x="54" y="32" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#526b7c">A reading note about interpreting agentic serving through query plans, workload characterization, and system optimization.</text>
+  </g>
+</svg>
