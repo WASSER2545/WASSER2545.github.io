@@ -183,8 +183,8 @@ function toggleFirstAuthor(checked) {
     const authorEl = item.querySelector('.pub-author');
     if (!authorEl) { item.style.display = 'none'; return; }
     const text = authorEl.textContent || '';
-    const isFirst = text.match(/^\s*Qiuyang Mang/);
-    const isCoFirst = text.includes('Qiuyang Mang*');
+    const isFirst = text.match(/^\s*Zhengle Wang/);
+    const isCoFirst = text.includes('Zhengle Wang*');
     item.style.display = (isFirst || isCoFirst) ? '' : 'none';
   });
 }
