@@ -39,13 +39,12 @@ layout: default
     </p>
   </header>
 
-  {%- if page.image -%}
-  <figure class="post-preview-image">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.title }} preview image">
-  </figure>
-  {%- endif -%}
-
   <article class="post-content">
+    {%- if page.image -%}
+    <figure class="post-preview-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }} preview image">
+    </figure>
+    {%- endif -%}
     {% if page.toc and page.toc.beginning %}
     <div id="table-of-contents">
       {% toc %}
