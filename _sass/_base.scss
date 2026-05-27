@@ -1030,7 +1030,8 @@ nav[data-toggle="toc"] {
 
 .post-list-image {
   flex-shrink: 0;
-  width: 280px;
+  width: 50%;
+  max-width: 400px;
 }
 
 .post-list-image img {
