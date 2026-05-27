@@ -32,12 +32,6 @@ My current research focuses on **realistic execution-aware workload synthesis** 
 
 ## Industry Experience
 
-**Research Scientist Intern, Analogy AI** (May 2026 – Aug 2026)
-*Founding Research Team · Menlo Park, USA*
-- Developed TraceForge, a research infrastructure for evaluating computer-use agents through OSWorld-compatible GUI execution and structured trajectory collection.
-- Built cross-platform execution backends (macOS, Linux Docker, macOS Tart VM) for reproducible experiments.
-- Created model-output ingestion and validation pipelines for LLM computer-use actions.
-
 **Machine Learning Intern, Meituan** (Oct 2025 – Dec 2025)
 *Hotel & Travel Recommendation Team · Beijing, China*
 - Explored cross-domain recommendation modeling across hotel, homestay, and ticket-booking scenarios.
