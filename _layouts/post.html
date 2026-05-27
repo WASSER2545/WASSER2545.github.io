@@ -77,4 +77,17 @@ layout: default
     {% include giscus.html %}
   {%- endif -%}
 
+  {%- if page.comments != false -%}
+  <hr>
+  <h2>Comments</h2>
+  <script src="https://utteranc.es/client.js"
+    repo="WASSER2545/WASSER2545.github.io"
+    issue-term="pathname"
+    label="comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+  </script>
+  {%- endif -%}
+
 </div>
