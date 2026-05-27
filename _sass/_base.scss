@@ -1015,3 +1015,36 @@ nav[data-toggle="toc"] {
 .pub-author strong {
   text-decoration: underline;
 }
+
+// Blog listing: left text + right thumbnail
+.post-list-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.post-list-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-list-image {
+  flex-shrink: 0;
+  width: 160px;
+}
+
+.post-list-image img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .post-list-item {
+    flex-direction: column;
+  }
+  .post-list-image {
+    width: 100%;
+    order: -1;
+  }
+}
