@@ -3,8 +3,8 @@ layout: post
 title: "Agentic System Workload Optimization"
 date: 2026-05-23
 description: From query-plan optimization to agent-native serving, and why agentic systems need macro workload characterization.
-image: /assets/img/blog/agentic-workload-preview.svg
-og_image: /assets/img/blog/agentic-workload-preview.svg
+image: /assets/img/blog/agentic-workload-preview.png
+og_image: /assets/img/blog/agentic-workload-preview.png
 tags: [agentic-systems, LLM-serving, workload-optimization]
 categories: research
 toc:
