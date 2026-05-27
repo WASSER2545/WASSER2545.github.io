@@ -1030,13 +1030,12 @@ nav[data-toggle="toc"] {
 
 .post-list-image {
   flex-shrink: 0;
-  width: 160px;
+  width: 280px;
 }
 
 .post-list-image img {
   width: 100%;
   border-radius: 6px;
-  object-fit: cover;
 }
 
 @media (max-width: 576px) {
