@@ -32,13 +32,12 @@ My current research focuses on **realistic execution-aware workload synthesis** 
 
 ## Industry Experience
 
-**Machine Learning Intern, Meituan** (Oct 2025 – Dec 2025)
-*Hotel & Travel Recommendation Team · Beijing, China*
-- Explored cross-domain recommendation modeling across hotel, homestay, and ticket-booking scenarios.
-- Designed multi-scenario recommendation architectures with shared representations and scenario-specific adaptation.
+**Machine Learning Intern, Meituan**, Hotel & Travel Recommendation Team, Beijing, China \\
+*Oct 2025 – Dec 2025*
 
-**Machine Learning Intern, Poizon Inc.** (Jun 2024 – Mar 2025)
-*Community Search Team · Beijing, China*
-- Developed relevance-aware reranking models for large-scale content search, improving offline AUC by 0.2pp.
-- Improved personalized pre-ranking with PPNet encoders and listwise ranking objectives (+0.3pp online QVCTR).
-- Designed relevance-oriented pre-ranking via knowledge distillation from downstream ranking models (+0.8pp offline AUC).
+Worked on cross-domain and multi-scenario recommendation modeling across hotel, homestay, and ticket-booking services. Explored shared representation learning and scenario-specific adaptation strategies for integrating heterogeneous user behaviors and item features across different travel-related scenarios.
+
+**Machine Learning Intern, Poizon Inc.**, Community Search Team, Beijing, China \\
+*Jun 2024 – Mar 2025*
+
+Worked on machine learning methods for large-scale content search and recommendation, including relevance-aware ranking, personalized pre-ranking, and model distillation for efficient retrieval/ranking pipelines. This experience exposed me to production-scale ML systems and motivated my broader interest in building reliable, data-driven infrastructure for real-world workloads.
