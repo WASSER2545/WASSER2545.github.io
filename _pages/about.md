@@ -27,8 +27,8 @@ Before joining Purdue, I collaborated with researchers and engineers from Renmin
 My current research focuses on **realistic execution-aware workload synthesis** for cloud OLAP systems, aiming to bridge the gap between academic evaluation and real-world production workloads. More broadly, I am interested in learned system optimization, AI for systems, and agentic infrastructure for data-intensive applications.
 
 **Research Themes:**
-- **Cloud OLAP Systems & Benchmarking**: Realistic workload synthesis, execution-aware query generation, query optimization, and performance evaluation.
-- **Agentic Systems Infrastructure**: Infrastructure and evaluation frameworks for agentic systems, including scalable data collection, trajectory management, and execution environments.
+- **Cloud Data Systems & AI-era Benchmarking**: Realistic workload synthesis, execution-aware query generation, query optimization, and performance evaluation for cloud OLAP systems and AI-driven data workloads.
+- **Agentic Systems Infrastructure**: Infrastructure and evaluation frameworks for agentic systems, including scalable data collection, trajectory management, execution environments, and reproducible evaluation.
 
 ## Industry Experience
 
