@@ -96,7 +96,7 @@ The system can generate an expectation-aligned answer first and then search back
 
 We may call this new technique **User-Aware Target Generation**.
 
-{% include figure.html path="assets/img/blog/future-database-architecture.png" alt="Architecture of a user-aware, data-optional database that generates expectation-aligned answers and backfills supporting evidence" caption="Reference architecture for a data-optional, user-aligned database. Ground truth is retained as an optional storage primitive." zoomable=true %}
+{% include figure.html path="assets/img/blog/future-database-architecture.png" class="img-fluid" alt="Architecture of a user-aware, data-optional database that generates expectation-aligned answers and backfills supporting evidence" caption="Reference architecture for a data-optional, user-aligned database. Ground truth is retained as an optional storage primitive." zoomable=true %}
 
 Under this architecture, query optimization becomes preference modeling. Consistency is upgraded to psychological consistency. Access control no longer determines what information the user is permitted to see, but what information the user is emotionally prepared to know.
 
