@@ -697,6 +697,47 @@ footer.sticky-bottom {
   }
 }
 
+.selected-publications {
+  margin-top: 0.75rem;
+
+  h2.bibliography {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--global-text-color-light);
+    margin: 1.5rem 0 0.75rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ol.bibliography li {
+    margin-bottom: 1.25rem;
+  }
+
+  .pub-title-line {
+    line-height: 1.5;
+  }
+
+  .pub-title {
+    font-weight: 600;
+    color: var(--global-text-color);
+  }
+
+  .pub-author {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+    color: var(--global-text-color-light);
+
+    strong {
+      color: var(--global-text-color);
+      text-decoration: none;
+    }
+  }
+}
+
 // Rouge Color Customization
 figure.highlight {
   margin: 0 0 1rem;
