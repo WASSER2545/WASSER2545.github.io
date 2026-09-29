@@ -4,7 +4,9 @@
       <div class="pub-item">
         <!-- Title + venue + links -->
         <div class="pub-title-line">
-        {%- if entry.pdf -%}
+        {%- if entry.selected -%}
+          <span class="pub-title">{{entry.title}}</span>
+        {%- elsif entry.pdf -%}
           {% if entry.pdf contains '://' -%}
           <a href="{{ entry.pdf }}" class="pub-title">{{entry.title}}</a>
           {%- else -%}
