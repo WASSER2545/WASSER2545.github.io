@@ -9,7 +9,7 @@ profile:
   image: avatar-photo.png
   image_circular: true
   more_info: >
-    <p>ZhengleWang@outlook.com</p>
+    <p>wang7690 at purdue dot edu</p>
     <p>Purdue University</p>
     <p>West Lafayette, IN, USA</p>
 
