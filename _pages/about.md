@@ -20,13 +20,14 @@ social: true
 
 I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University advised by [Prof. Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html).
 
-My research interests are in **database systems** and **cloud data analytics systems**, with a particular focus on workload generation, query optimization, and performance evaluation for modern cloud-native OLAP databases.
+My research focuses on **database systems** and **AI for data management**, including realistic workload generation for cloud analytics and scalable semantic query processing over unstructured data.
 
 Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on projects related to cloud database benchmarking and system optimization. I also worked on large-scale recommendation and search systems through research and engineering internships in industry.
 
-My current research focuses on **realistic execution-aware workload synthesis** for cloud OLAP systems, aiming to bridge the gap between academic evaluation and real-world production workloads. More broadly, I am interested in learned system optimization, AI for systems, and agentic infrastructure for data-intensive applications.
+I am the student lead of [JEVDB](https://www.jevdb.org/), a semantic database system that combines fast decision models, candidate pruning, and selective LLM escalation to make semantic queries more efficient. I also work on **realistic execution-aware workload synthesis** for cloud OLAP systems, aiming to bridge the gap between academic evaluation and real-world production workloads.
 
 **Research Themes:**
+- **Semantic Data Systems**: Efficient semantic filters, joins, classification, and ranking over unstructured data through decision models, candidate pruning, and adaptive model escalation.
 - **Cloud Data Systems & AI-era Benchmarking**: Realistic workload synthesis, execution-aware query generation, query optimization, and performance evaluation for cloud OLAP systems and AI-driven data workloads.
 - **Agentic Systems Infrastructure**: Infrastructure and evaluation frameworks for agentic systems, including scalable data collection, trajectory management, execution environments, and reproducible evaluation.
 
