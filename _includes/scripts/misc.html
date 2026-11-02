@@ -11,7 +11,7 @@
   <script defer src="{{ '/assets/js/zoom.js' | relative_url }}"></script>
 {%- endif -%}
 
-{% if page.toc and page.toc.sidebar %}
+{% if page.toc and page.toc.sidebar and page.layout != 'post' %}
   <!-- Sidebar Table of Contents -->
   <script defer src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 {% endif %}

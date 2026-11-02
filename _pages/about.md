@@ -2,43 +2,60 @@
 layout: about
 title: About
 permalink: /
-subtitle: 
+subtitle: Ph.D. Student in Computer Science · Purdue University
 
 profile:
-  align: right
   image: avatar-photo.png
-  image_circular: true
   more_info: >
-    <p>wang7690 at purdue dot edu</p>
-    <p>Purdue University</p>
     <p>West Lafayette, IN, USA</p>
 
 news: true
 selected_papers: true
+latest_posts: true
 social: true
+contact_email: wang7690@purdue.edu
+
+research_areas:
+  - Semantic data systems
+  - Cloud analytics & benchmarking
+  - Agentic systems infrastructure
+
+research_highlights:
+  - name: JEVDB
+    area: Semantic query processing
+    description: Fast decision models, candidate pruning, and selective LLM escalation for efficient queries over unstructured data.
+    links:
+      - label: Paper
+        url: https://arxiv.org/abs/2610.02046
+      - label: Website
+        url: https://www.jevdb.org/
+  - name: ResQ
+    area: Workload synthesis
+    description: Realistic, performance-aware query generation to bridge the gap between database evaluation and production workloads.
+    links:
+      - label: Paper
+        url: https://arxiv.org/abs/2602.02999
+  - name: PBench
+    area: Cloud analytics benchmarking
+    description: Workload synthesis with real statistics for evaluating cloud analytics systems.
+    links:
+      - label: Paper
+        url: https://arxiv.org/abs/2506.16379
+
+background: Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on cloud database benchmarking and system optimization.
+experience:
+  - company: Meituan
+    role: Machine Learning Intern
+    team: Hotel & Travel Recommendation Team · Beijing, China
+    dates: Oct 2025 – Dec 2025
+    description: Worked on cross-domain and multi-scenario recommendation modeling across hotel, homestay, and ticket-booking services. Explored shared representation learning and scenario-specific adaptation strategies for integrating heterogeneous user behaviors and item features across different travel-related scenarios.
+  - company: Poizon Inc.
+    role: Machine Learning Intern
+    team: Community Search Team · Beijing, China
+    dates: Jun 2024 – Mar 2025
+    description: Worked on machine learning methods for large-scale content search and recommendation, including relevance-aware ranking, personalized pre-ranking, and model distillation for efficient retrieval/ranking pipelines. This experience exposed me to production-scale ML systems and motivated my broader interest in building reliable, data-driven infrastructure for real-world workloads.
 ---
 
-I am Zhengle Wang, a Ph.D. student in Computer Science at Purdue University advised by [Prof. Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html).
+I build **database systems and AI for data management**. At Purdue, I work with [Prof. Chunwei Liu](https://www.cs.purdue.edu/people/faculty/chunwei.html) on efficient semantic query processing and realistic workloads for cloud analytics.
 
-My research focuses on **database systems** and **AI for data management**, including realistic workload generation for cloud analytics and scalable semantic query processing over unstructured data.
-
-Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on projects related to cloud database benchmarking and system optimization. I also worked on large-scale recommendation and search systems through research and engineering internships in industry.
-
-I am the student lead of [JEVDB](https://www.jevdb.org/), a semantic database system that combines fast decision models, candidate pruning, and selective LLM escalation to make semantic queries more efficient. I also work on **realistic execution-aware workload synthesis** for cloud OLAP systems, aiming to bridge the gap between academic evaluation and real-world production workloads.
-
-**Research Themes:**
-- **Semantic Data Systems**: Efficient semantic filters, joins, classification, and ranking over unstructured data through decision models, candidate pruning, and adaptive model escalation.
-- **Cloud Data Systems & AI-era Benchmarking**: Realistic workload synthesis, execution-aware query generation, query optimization, and performance evaluation for cloud OLAP systems and AI-driven data workloads.
-- **Agentic Systems Infrastructure**: Infrastructure and evaluation frameworks for agentic systems, including scalable data collection, trajectory management, execution environments, and reproducible evaluation.
-
-## Industry Experience
-
-**Machine Learning Intern, Meituan**, Hotel & Travel Recommendation Team, Beijing, China \\
-*Oct 2025 – Dec 2025*
-
-Worked on cross-domain and multi-scenario recommendation modeling across hotel, homestay, and ticket-booking services. Explored shared representation learning and scenario-specific adaptation strategies for integrating heterogeneous user behaviors and item features across different travel-related scenarios.
-
-**Machine Learning Intern, Poizon Inc.**, Community Search Team, Beijing, China \\
-*Jun 2024 – Mar 2025*
-
-Worked on machine learning methods for large-scale content search and recommendation, including relevance-aware ranking, personalized pre-ranking, and model distillation for efficient retrieval/ranking pipelines. This experience exposed me to production-scale ML systems and motivated my broader interest in building reliable, data-driven infrastructure for real-world workloads.
+I am the student lead of [JEVDB](https://www.jevdb.org/). My broader interests include execution-aware workload synthesis and infrastructure for agentic systems, from trajectory management to reproducible evaluation.

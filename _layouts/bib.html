@@ -2,7 +2,7 @@
 ---
 <!-- _layouts/bib.html -->
       <div class="pub-item">
-        <!-- Title + venue + links -->
+        <!-- Title -->
         <div class="pub-title-line">
         {%- if entry.selected -%}
           <span class="pub-title">{{entry.title}}</span>
@@ -15,13 +15,55 @@
         {%- else -%}
           <span class="pub-title">{{entry.title}}</span>
         {%- endif -%}
+        </div>
+
+        <!-- Author -->
+        <div class="pub-author">
+        {%- assign author_array_size = entry.author_array | size -%}
+        {%- assign author_array_limit = author_array_size -%}
+
+        {%- for author in entry.author_array limit: author_array_limit -%}
+          {%- assign author_is_self = false -%}
+          {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
+          {%- if site.scholar.last_name contains author_last_name -%}
+            {%- if site.scholar.first_name contains author.first -%}
+              {%- assign author_is_self = true -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- assign coauthor_url = nil -%}
+          {%- if site.data.coauthors[author_last_name] -%}
+            {%- for coauthor in site.data.coauthors[author_last_name] -%}
+              {%- if coauthor.firstname contains author.first -%}
+                {%- assign coauthor_url = coauthor.url -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+
+          {%- if forloop.length > 1 -%}
+            {%- if forloop.first == false -%},&nbsp;{%- endif -%}
+            {%- if forloop.last and author_array_limit == author_array_size -%}and&nbsp;{%- endif -%}
+          {%- endif -%}
+          {%- if author_is_self -%}
+            <strong>{{author.first}} {{author.last}}</strong>
+          {%- else -%}
+            {%- if coauthor_url -%}
+              <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
+            {%- else -%}
+              {{author.first}} {{author.last}}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        </div>
+
+        <div class="pub-meta">
         {%- if entry.abbr -%}
-          <span class="pub-sep"> · </span><span class="pub-venue-tag">{{entry.abbr}}, {{entry.year}}</span>
+          <span class="pub-venue-tag">{{entry.abbr}}, {{entry.year}}</span>
         {%- else -%}
-          <span class="pub-sep"> · </span><span class="pub-venue-tag">Preprint, {{entry.year}}</span>
+          <span class="pub-venue-tag">Preprint, {{entry.year}}</span>
         {%- endif -%}
+          <div class="pub-links">
         {%- if entry.pdf or entry.code or entry.slides or entry.poster or entry.blog or entry.website or entry.abstract or entry.bibtex_show or entry.arxiv -%}
-          <span class="pub-sep"> · </span>
           {%- assign link_started = false -%}
           {%- if entry.pdf -%}
             {% if entry.pdf contains '://' -%}
@@ -79,45 +121,7 @@
             <a class="bibtex pub-link" role="button">bibtex</a>
           {%- endif -%}
         {%- endif -%}
-        </div>
-
-        <!-- Author -->
-        <div class="pub-author">
-        {%- assign author_array_size = entry.author_array | size -%}
-        {%- assign author_array_limit = author_array_size -%}
-
-        {%- for author in entry.author_array limit: author_array_limit -%}
-          {%- assign author_is_self = false -%}
-          {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "*" | remove: "†" | remove: "^" -%}
-          {%- if site.scholar.last_name contains author_last_name -%}
-            {%- if site.scholar.first_name contains author.first -%}
-              {%- assign author_is_self = true -%}
-            {%- endif -%}
-          {%- endif -%}
-          {%- assign coauthor_url = nil -%}
-          {%- if site.data.coauthors[author_last_name] -%}
-            {%- for coauthor in site.data.coauthors[author_last_name] -%}
-              {%- if coauthor.firstname contains author.first -%}
-                {%- assign coauthor_url = coauthor.url -%}
-                {%- break -%}
-              {%- endif -%}
-            {%- endfor -%}
-          {%- endif -%}
-
-          {%- if forloop.length > 1 -%}
-            {%- if forloop.first == false -%},&nbsp;{%- endif -%}
-            {%- if forloop.last and author_array_limit == author_array_size -%}and&nbsp;{%- endif -%}
-          {%- endif -%}
-          {%- if author_is_self -%}
-            <strong>{{author.first}} {{author.last}}</strong>
-          {%- else -%}
-            {%- if coauthor_url -%}
-              <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
-            {%- else -%}
-              {{author.first}} {{author.last}}
-            {%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
+          </div>
         </div>
 
         {% if entry.abstract -%}

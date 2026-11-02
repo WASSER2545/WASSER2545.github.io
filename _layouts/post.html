@@ -1,10 +1,7 @@
 ---
 layout: default
 ---
-<!-- _layouts/post.html -->
 {%- assign year = page.date | date: "%Y" -%}
-{%- assign tags = page.tags | join: "" -%}
-{%- assign categories = page.categories | join: "" -%}
 
 {% if page._styles %}
 <!-- Page/Post style -->
@@ -13,44 +10,43 @@ layout: default
 </style>
 {% endif %}
 
-<div class="post">
+<div class="post blog-article{% if page.toc %} has-toc{% endif %}">
 
-  <header class="post-header">
-    <h2 class="post-title">{{ page.title }}</h2>
-    <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}{%- if page.author -%} • {{ page.author }}{%- endif -%}{%- if page.meta -%} • {{ page.meta }}{%- endif -%}</p>
-    <p class="post-tags">
-      <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}"> <i class="fas fa-calendar fa-sm"></i> {{ year }} </a>
-      {%- if tags != "" %}
-      &nbsp; &middot; &nbsp;
-        {% for tag in page.tags -%}
-        <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
-          <i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a> &nbsp;
-          {% endfor -%}
-      {% endif %}
-
-      {%- if categories != "" %}
-      &nbsp; &middot; &nbsp;
-        {% for category in page.categories -%}
-        <a href="{{ category | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
-          <i class="fas fa-tag fa-sm"></i> {{ category }}</a> &nbsp;
-          {% endfor -%}
-      {% endif %}
-
-    </p>
+  <header class="article-header">
+    <a class="article-back" href="{{ '/blog/' | relative_url }}">← All writing</a>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="article-deck">{{ page.description }}</p>{% endif %}
+    <div class="article-meta">
+      <a href="{{ year | prepend: '/blog/' | append: '/' | relative_url }}"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></a>
+      {% if page.author %}<span>{{ page.author }}</span>{% endif %}
+      {% if page.meta %}<span>{{ page.meta }}</span>{% endif %}
+      {% for category in page.categories %}
+        <a href="{{ category | slugify | prepend: '/blog/category/' | append: '/' | relative_url }}">{{ category | capitalize }}</a>
+      {% endfor %}
+    </div>
+    <div class="article-tags" aria-label="Article topics">
+      {% for tag in page.tags %}
+        <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">{{ tag }}</a>
+      {% endfor %}
+    </div>
   </header>
 
+  {% if page.toc %}
+    <aside class="article-toc">
+      <details open>
+        <summary>On this page</summary>
+        <nav aria-label="Table of contents">{% toc %}</nav>
+      </details>
+    </aside>
+  {% endif %}
+
+  <div class="article-main">
   <article class="post-content">
     {%- if page.image -%}
     <figure class="post-preview-image">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title }} preview image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }} overview" data-zoomable>
     </figure>
     {%- endif -%}
-    {% if page.toc and page.toc.beginning %}
-    <div id="table-of-contents">
-      {% toc %}
-    </div>
-    <hr>
-    {% endif %}
     <div id="markdown-content">
       {{ content }}
     </div>
@@ -78,7 +74,7 @@ layout: default
   {%- endif -%}
 
   {%- if page.comments != false -%}
-  <hr>
+  <section class="article-comments" aria-label="Comments">
   <h2>Comments</h2>
   <script src="https://utteranc.es/client.js"
     repo="WASSER2545/WASSER2545.github.io"
@@ -88,6 +84,9 @@ layout: default
     crossorigin="anonymous"
     async>
   </script>
+  </section>
   {%- endif -%}
-
+  </div>
 </div>
+
+<script defer src="{{ '/assets/js/post.js' | relative_url }}"></script>

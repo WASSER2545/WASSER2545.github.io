@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: /blog/
-title: 
-description:
+title: Blog
+description: Notes on databases, AI, and the systems behind them.
 ---
 
 <ul class="post-list">

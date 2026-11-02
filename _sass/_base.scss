@@ -697,44 +697,99 @@ footer.sticky-bottom {
   }
 }
 
-.selected-publications {
-  margin-top: 0.75rem;
-
+// Shared publication presentation on the homepage and full list.
+.publications {
   h2.bibliography {
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--global-text-color-light);
-    margin: 1.5rem 0 0.75rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
+    margin: 1.75rem 0 1rem;
   }
 
   ol.bibliography li {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.4rem;
   }
 
-  .pub-title-line {
-    line-height: 1.5;
-  }
+  .pub-title-line { line-height: 1.5; }
 
   .pub-title {
+    font-family: inherit;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--global-text-color);
   }
 
   .pub-author {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    margin-top: 0.3rem;
     color: var(--global-text-color-light);
+
+    a { color: inherit; }
 
     strong {
       color: var(--global-text-color);
+      font-weight: 600;
       text-decoration: none;
     }
+  }
+
+  .pub-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.45rem 1rem;
+    margin-top: 0.45rem;
+    font-size: 0.78rem;
+  }
+
+  .pub-venue-tag {
+    color: var(--global-theme-color);
+    background: var(--global-code-bg-color);
+    border-radius: 4px;
+    padding: 0.1rem 0.45rem;
+    font-weight: 600;
+  }
+
+  .pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .pub-link {
+    color: var(--global-theme-color);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .pub-link-sep { display: none; }
+}
+
+.selected-publications {
+  margin-top: 0;
+
+  h2.bibliography:first-child { margin-top: 0; }
+}
+
+.pub-filters {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.pub-filter-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  input {
+    accent-color: var(--global-theme-color);
+    width: 1rem;
+    height: 1rem;
   }
 }
 

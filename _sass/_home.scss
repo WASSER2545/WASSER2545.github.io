@@ -1,0 +1,306 @@
+// Homepage: a compact introduction, followed by research and recent work.
+.home {
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 0.5rem 0 1rem;
+
+  a:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 4px;
+  }
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-areas: "heading profile" "intro profile";
+  column-gap: 4rem;
+  align-items: start;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.home-heading {
+  grid-area: heading;
+
+  h1 {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    letter-spacing: -0.04em;
+    margin: 0 0 0.65rem;
+  }
+}
+
+.home-eyebrow {
+  color: var(--global-theme-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.home-subtitle {
+  color: var(--global-text-color-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-intro {
+  grid-area: intro;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.home-profile {
+  grid-area: profile;
+  text-align: center;
+  padding-top: 0.75rem;
+
+  figure {
+    margin-bottom: 1.1rem;
+  }
+
+  .home-portrait {
+    display: block;
+    width: 240px;
+    height: 240px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      color: var(--global-text-color);
+
+      &:hover {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.home-location p {
+  color: var(--global-text-color-light);
+  font-size: 0.78rem;
+  margin: 0.35rem 0 0;
+}
+
+.research-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+
+  li {
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 5px;
+    color: var(--global-text-color-light);
+    font-size: 0.75rem;
+  }
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  a span { color: inherit; }
+
+  .home-contact {
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--global-theme-color);
+    border-radius: 5px;
+
+    &:hover {
+      background: var(--global-theme-color);
+      color: var(--global-hover-text-color);
+      text-decoration: none;
+    }
+  }
+}
+
+.home-section {
+  margin: 2.75rem 0;
+}
+
+.home-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.25rem;
+
+  h2 {
+    font-size: 1.65rem;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+
+  > a {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+}
+
+.research-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.research-highlight {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  background: var(--global-card-bg-color);
+
+  .research-area {
+    color: var(--global-text-color-light);
+    font-size: 0.73rem;
+    margin-bottom: 0.6rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.8rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+}
+
+.research-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  a span { color: inherit; }
+}
+
+.home .news {
+  .table-responsive {
+    max-height: none !important;
+  }
+
+  th {
+    width: 125px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--global-text-color-light);
+    white-space: nowrap;
+  }
+
+  td { font-size: 0.9rem; }
+  th, td { padding: 0.55rem 0; }
+}
+
+.home-background {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.experience-timeline {
+  list-style: none;
+  border-left: 1px solid var(--global-divider-color);
+  margin: 0 0 0 0.3rem;
+  padding: 0 0 0 1.5rem;
+
+  li {
+    position: relative;
+    margin-bottom: 1.8rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.5rem;
+      left: -1.8rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--global-theme-color);
+    }
+  }
+
+  p { font-size: 0.875rem; }
+
+  .experience-role {
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    margin: 0.35rem 0 0.65rem;
+  }
+}
+
+.experience-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+
+  h3 {
+    font-family: inherit;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+.experience-date {
+  color: var(--global-text-color-light);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 767px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    grid-template-areas: "heading" "profile" "intro";
+    gap: 1.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .home-heading { text-align: center; }
+  .home-subtitle { margin-bottom: 0; }
+
+  .home-profile {
+    padding: 0;
+
+    .home-portrait {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+    }
+
+    figure { margin-bottom: 0.5rem; }
+  }
+
+  .research-highlights { grid-template-columns: 1fr; }
+  .home-section { margin: 2rem 0; }
+  .home-section-heading h2 { font-size: 1.45rem; }
+  .home .news th { width: 95px; }
+}

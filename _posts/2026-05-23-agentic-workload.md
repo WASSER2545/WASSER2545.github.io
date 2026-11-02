@@ -10,8 +10,6 @@ categories: research
 toc:
   sidebar: left
 ---
-**Agentic System Workload Optimization: From Query Plans to Agent-Native Serving**
-
 The question I care about is simple:
 
 > As LLM applications move from single calls to multi-step, multi-agent, and tool-using workflows, what exactly should a serving system optimize?
