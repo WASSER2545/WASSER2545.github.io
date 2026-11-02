@@ -1,0 +1,56 @@
+# Album artwork is sourced from the linked Apple Music or official artist page.
+- title: Close to the Edge
+  artist: "Yes"
+  year: 1972
+  cover: close-to-the-edge.jpg
+  url: https://music.apple.com/us/album/close-to-the-edge/1049014094
+- title: The Dark Side of the Moon
+  artist: Pink Floyd
+  year: 1973
+  cover: the-dark-side-of-the-moon.jpg
+  url: https://www.pinkfloyd.com/albums/the-dark-side-of-the-moon/
+- title: Wish You Were Here
+  artist: Pink Floyd
+  year: 1975
+  cover: wish-you-were-here.jpg
+  url: https://music.apple.com/us/album/wish-you-were-here/1065973975
+- title: The Wall
+  artist: Pink Floyd
+  year: 1979
+  cover: the-wall.jpg
+  url: https://music.apple.com/us/album/the-wall/1065975633
+- title: In the Court of the Crimson King
+  artist: King Crimson
+  year: 1969
+  cover: in-the-court-of-the-crimson-king.jpg
+  url: https://music.apple.com/us/album/in-the-court-of-the-crimson-king-expanded-edition/918534711
+- title: Islands
+  artist: King Crimson
+  year: 1971
+  cover: islands.jpg
+  url: https://music.apple.com/us/album/islands-expanded-edition/978453417
+- title: Red
+  artist: King Crimson
+  year: 1974
+  cover: red.jpg
+  url: https://music.apple.com/us/album/red-expanded-edition/918614446
+- title: Discipline
+  artist: King Crimson
+  year: 1981
+  cover: discipline.jpg
+  url: https://music.apple.com/us/album/discipline-expanded-edition/1090440045
+- title: Mirage
+  artist: Camel
+  year: 1974
+  cover: mirage.jpg
+  url: https://music.apple.com/us/album/mirage-remastered/1443266362
+- title: The Snow Goose
+  artist: Camel
+  year: 1975
+  cover: the-snow-goose.jpg
+  url: https://music.apple.com/us/album/the-snow-goose-expanded-edition/1408870777
+- title: Selling England by the Pound
+  artist: Genesis
+  year: 1973
+  cover: selling-england-by-the-pound.jpg
+  url: https://music.apple.com/us/album/selling-england-by-the-pound-2007-stereo-mix/294810249
