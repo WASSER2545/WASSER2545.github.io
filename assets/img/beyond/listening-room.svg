@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="560" viewBox="0 0 560 560">
+  <defs>
+    <radialGradient id="vinyl">
+      <stop offset="0" stop-color="#373937"/>
+      <stop offset=".5" stop-color="#191d1c"/>
+      <stop offset=".74" stop-color="#343735"/>
+      <stop offset="1" stop-color="#171c1b"/>
+    </radialGradient>
+    <pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#ede7d9"/>
+      <path d="M0 2h2m3 4h2" stroke="#b5ab99" stroke-width=".4" opacity=".35"/>
+    </pattern>
+    <clipPath id="sleeve"><rect x="38" y="86" width="355" height="376" rx="2"/></clipPath>
+  </defs>
+  <ellipse cx="291" cy="486" rx="224" ry="17" fill="#202723" opacity=".08"/>
+  <g transform="rotate(8 348 276)">
+    <circle cx="348" cy="276" r="192" fill="url(#vinyl)"/>
+    <g fill="none" stroke="#9ba49c" stroke-width=".6" opacity=".2">
+      <circle cx="348" cy="276" r="182"/><circle cx="348" cy="276" r="177"/>
+      <circle cx="348" cy="276" r="170"/><circle cx="348" cy="276" r="165"/>
+      <circle cx="348" cy="276" r="158"/><circle cx="348" cy="276" r="153"/>
+      <circle cx="348" cy="276" r="146"/><circle cx="348" cy="276" r="141"/>
+      <circle cx="348" cy="276" r="134"/><circle cx="348" cy="276" r="129"/>
+      <circle cx="348" cy="276" r="122"/><circle cx="348" cy="276" r="117"/>
+      <circle cx="348" cy="276" r="110"/><circle cx="348" cy="276" r="105"/>
+      <circle cx="348" cy="276" r="98"/><circle cx="348" cy="276" r="93"/>
+    </g>
+    <circle cx="348" cy="276" r="67" fill="#b76e40"/>
+    <circle cx="348" cy="276" r="58" fill="none" stroke="#ede7d9" opacity=".5"/>
+    <text x="348" y="249" fill="#fff3de" text-anchor="middle" font-family="Georgia,serif" font-size="15">BEYOND</text>
+    <text x="348" y="310" fill="#fff3de" text-anchor="middle" font-family="Georgia,serif" font-size="15">RESEARCH</text>
+    <circle cx="348" cy="276" r="4" fill="#191d1c"/>
+  </g>
+  <g transform="rotate(-6 216 274)">
+    <rect x="43" y="92" width="355" height="376" rx="2" fill="#182721" opacity=".13"/>
+    <rect x="38" y="86" width="355" height="376" rx="2" fill="url(#paper)"/>
+    <g clip-path="url(#sleeve)" fill="none" stroke-width="14">
+      <path d="M15 403C110 403 79 214 178 214S221 411 316 411 331 239 421 239" stroke="#234e4d"/>
+      <path d="M15 380C110 380 79 191 178 191S221 388 316 388 331 216 421 216" stroke="#47716a"/>
+      <path d="M15 357C110 357 79 168 178 168S221 365 316 365 331 193 421 193" stroke="#b8924a"/>
+      <path d="M15 334C110 334 79 145 178 145S221 342 316 342 331 170 421 170" stroke="#c47a4b"/>
+    </g>
+    <rect x="38" y="86" width="355" height="56" fill="#ede7d9"/>
+    <text x="59" y="111" fill="#253e36" font-family="Arial,sans-serif" font-size="9" letter-spacing="2">ZHENGLE WANG / LISTENING ROOM</text>
+    <text x="59" y="130" fill="#253e36" font-family="Georgia,serif" font-size="15">In a different time signature.</text>
+    <text x="59" y="439" fill="#253e36" font-family="Arial,sans-serif" font-size="8" letter-spacing="1.4">PROGRESSIVE ROCK / JAZZ FUSION</text>
+    <path d="M59 421h54m181 0h77" stroke="#253e36" stroke-width=".7"/>
+    <rect x="38" y="86" width="355" height="376" rx="2" fill="none" stroke="#988f7d" stroke-width=".7"/>
+  </g>
+</svg>
