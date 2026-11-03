@@ -48,6 +48,11 @@ research_highlights:
 
 background: Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on cloud database benchmarking and system optimization.
 experience:
+  - company: Analogy AI
+    role: Research Scientist Intern
+    team: Remote · Palo Alto, CA
+    dates: May 1 – Aug 1, 2026
+    description: Built TraceForge infrastructure for evaluating computer-use agents.
   - company: Meituan
     role: Machine Learning Intern
     team: Hotel & Travel Recommendation Team · Beijing, China
