@@ -51,7 +51,7 @@ experience:
   - company: Analogy AI
     role: Research Scientist Intern
     team: Remote · Palo Alto, CA
-    dates: May 1 – Aug 1, 2026
+    dates: May 2026 – Aug 2026
     description: Built TraceForge infrastructure for evaluating computer-use agents.
   - company: Meituan
     role: Machine Learning Intern
