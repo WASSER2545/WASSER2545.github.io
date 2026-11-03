@@ -22,25 +22,29 @@ research_areas:
 
 research_highlights:
   - name: JEVDB
-    area: Semantic query processing
-    description: Fast decision models, candidate pruning, and selective LLM escalation for efficient queries over unstructured data.
+    area: Semantic data systems
+    vision: JEVDB is a next-generation database engine for scalable semantic query processing.
+    description: >
+      It brings AI-powered understanding into the database, with the vision of
+      making queries over unstructured data as natural and scalable as queries
+      over structured tables.
     links:
       - label: Paper
         url: https://arxiv.org/abs/2610.02046
       - label: Website
         url: https://www.jevdb.org/
-  - name: ResQ
-    area: Workload synthesis
-    description: Realistic, performance-aware query generation to bridge the gap between database evaluation and production workloads.
-    links:
-      - label: Paper
-        url: https://arxiv.org/abs/2602.02999
-  - name: PBench
+  - name: Workload Synthesis
     area: Cloud analytics benchmarking
-    description: Workload synthesis with real statistics for evaluating cloud analytics systems.
+    vision: Workload Synthesis brings production realism to benchmarking for modern data systems.
+    description: >
+      Through PBench and ResQ, it turns production traces into runnable workloads,
+      helping us build and evaluate systems for the complexity and diversity of
+      real-world use.
     links:
-      - label: Paper
+      - label: PBench paper
         url: https://arxiv.org/abs/2506.16379
+      - label: ResQ paper
+        url: https://arxiv.org/abs/2602.02999
 
 background: Before joining Purdue, I collaborated with researchers and engineers from Renmin University of China, Massachusetts Institute of Technology, and Amazon Web Services on cloud database benchmarking and system optimization.
 experience:
